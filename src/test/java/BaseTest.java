@@ -9,6 +9,7 @@ public class BaseTest {
     @BeforeEach
     public void setup() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         //Opens Web
         driver.get("https://www.saucedemo.com/v1/");
     }
