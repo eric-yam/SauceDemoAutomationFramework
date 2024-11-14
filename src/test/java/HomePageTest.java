@@ -1,7 +1,6 @@
 import org.example.Pages.HomePage;
 import org.example.Pages.LoginPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 
 public class
 HomePageTest extends BaseTest {
@@ -13,17 +12,16 @@ HomePageTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
 
         HomePage homePage = new HomePage(this.driver);
-        String[] temp = {"Sauce Labs Backpack",
+        String[] expectedProductNames = {"Sauce Labs Backpack",
                 "Sauce Labs Bike Light",
                 "Sauce Labs Bolt T-Shirt",
                 "Sauce Labs Fleece Jacket",
                 "Sauce Labs Onesie"
         };
 
-//        homePage.getProductByName("Sauce Labs Backpack");
         boolean productFound = true;
-        for (int i = 0; productFound && i < temp.length; i++) {
-            productFound = productFound && (homePage.getProductByName(temp[i]).size() > 0);
+        for (int i = 0; productFound && i < expectedProductNames.length; i++) {
+            productFound = productFound && (!homePage.getProductByName(expectedProductNames[i]).isEmpty());
         }
 
         assert (productFound == true);
@@ -35,14 +33,20 @@ HomePageTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
 
         HomePage homePage = new HomePage(this.driver);
+        homePage.applyFilter("Name (A to Z)");
+        homePage.setOrderOfProductList();
+        assert (homePage.orderByNameAscend() == true);
+
+        homePage.applyFilter("Name (Z to A)");
+        homePage.setOrderOfProductList();
+        assert (homePage.orderByNameDescend() == true);
+
+        homePage.applyFilter("Price (low to high)");
+        homePage.setOrderOfProductList();
+        assert (homePage.orderByPriceAscend() == true);
+
         homePage.applyFilter("Price (high to low)");
-
-        //Verify filter has been applied by validating order of items
-        assert(this.validateFilterApplied(this.driver) == true);
-
-    }
-
-    public boolean validateFilterApplied(WebDriver driver) {
-        return false;
+        homePage.setOrderOfProductList();
+        assert (homePage.orderByPriceDescend() == true);
     }
 }

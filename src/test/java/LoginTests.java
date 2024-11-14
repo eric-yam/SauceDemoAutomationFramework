@@ -13,21 +13,21 @@ public class LoginTests extends BaseTest {
 
         //Verify login successful by validating we are on the homepage
         HomePage homePage = new HomePage(this.driver);
-        assert(homePage.homeDisplayed() == true);
+        assert (homePage.homeDisplayed() == true);
 
     }
 
     @Test
-    public void Test_2(){
+    public void Test_2() {
         LoginPage loginPage = new LoginPage(this.driver);
 
         loginPage.inputUserName("standard_user");
         loginPage.inputPassword("invalid_password");
         loginPage.clickLoginButton();
-        assert(loginPage.isErrorMsgDisplayed() == true);
+        assert (loginPage.isErrorMsgDisplayed() == true);
 
         loginPage.clickClearErrorButton();
-        assert(loginPage.isErrorMsgDisplayed() == false);
+        assert (loginPage.isErrorMsgDisplayed() == false);
 
     }
 }
