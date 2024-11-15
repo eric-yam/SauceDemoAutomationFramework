@@ -1,4 +1,4 @@
-package org.example.Pages;
+package org.example.Pages.HomePage;
 
 import org.example.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends BasePage {
+
+    @FindBy(className = "product_label")
+    WebElement pageTitle;
+
     @FindBy(className = "product_sort_container")
     WebElement filterButton;
     @FindBy(xpath = "//Select[@Class='product_sort_container']//option")
@@ -30,6 +34,31 @@ public class HomePage extends BasePage {
         }
     }
 
+    public void waitForHomePage() {
+        this.waitForVisibilityOfElement(this.pageTitle);
+    }
+
+    public Product clickProduct(String productName) {
+        int index = this.indexOfProduct(productName);
+        this.productCollector.clickProductByIndex(index);
+
+        return this.productCollector.getProductsList().get(index);
+    }
+
+    public int indexOfProduct(String productName) {
+        // If the product exists within ProductCollector, returns valid index
+        // Otherwise returns -1 as invalid index
+
+        List<Product> productList = this.productCollector.getProductsList();
+
+        for (int i = 0; i < productList.size(); i++) {
+            if (productList.get(i).getProductName().equals(productName)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void setOrderOfProductList() {
         // Subsequent updates to the order of product list must invoke this method again
         // To update ProductCollector for instance of HomePage
@@ -39,14 +68,10 @@ public class HomePage extends BasePage {
         this.productCollector = pc;
     }
 
-    public boolean homeDisplayed() {
-        return this.hamBurgMenuDisplayed() && this.shoppingCartDisplayed();
-    }
+    public List<Product> getProductByName(String productName) {
+        List<Product> result = new ArrayList<>();
 
-    public List<Products> getProductByName(String productName) {
-        List<Products> result = new ArrayList<>();
-
-        for (Products product : this.productCollector.getProductsList()) {
+        for (Product product : this.productCollector.getProductsList()) {
             if (product.getProductName().equals(productName)) {
                 result.add(product);
             }
@@ -56,7 +81,7 @@ public class HomePage extends BasePage {
 
     public boolean orderByNameAscend() {
         boolean isOrder = true;
-        List<Products> list = this.productCollector.getProductsList();
+        List<Product> list = this.productCollector.getProductsList();
 
         for (int i = 0; isOrder && i < list.size() - 1; i++) {
             int result = list.get(i).getProductName().compareTo(list.get(i + 1).getProductName());
@@ -67,7 +92,7 @@ public class HomePage extends BasePage {
 
     public boolean orderByNameDescend() {
         boolean isOrder = true;
-        List<Products> list = this.productCollector.getProductsList();
+        List<Product> list = this.productCollector.getProductsList();
 
         for (int i = 0; isOrder && i < list.size() - 1; i++) {
             int result = list.get(i).getProductName().compareTo(list.get(i + 1).getProductName());
@@ -78,7 +103,7 @@ public class HomePage extends BasePage {
 
     public boolean orderByPriceAscend() {
         boolean isOrder = true;
-        List<Products> list = this.productCollector.getProductsList();
+        List<Product> list = this.productCollector.getProductsList();
 
         for (int i = 0; isOrder && i < list.size() - 1; i++) {
             isOrder = isOrder && (list.get(i).getProductPrice() <= list.get(i + 1).getProductPrice());
@@ -88,7 +113,7 @@ public class HomePage extends BasePage {
 
     public boolean orderByPriceDescend() {
         boolean isOrder = true;
-        List<Products> list = this.productCollector.getProductsList();
+        List<Product> list = this.productCollector.getProductsList();
 
         for (int i = 0; isOrder && i < list.size() - 1; i++) {
             isOrder = isOrder && (list.get(i).getProductPrice() >= list.get(i + 1).getProductPrice());

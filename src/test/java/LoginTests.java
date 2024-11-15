@@ -1,5 +1,5 @@
-import org.example.Pages.HomePage;
-import org.example.Pages.LoginPage;
+import org.example.Pages.HomePage.HomePage;
+import org.example.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 
 public class LoginTests extends BaseTest {
@@ -13,7 +13,7 @@ public class LoginTests extends BaseTest {
 
         //Verify login successful by validating we are on the homepage
         HomePage homePage = new HomePage(this.driver);
-        assert (homePage.homeDisplayed() == true);
+        assert (homePage.topNavigationBarDisplayed() == true);
 
     }
 

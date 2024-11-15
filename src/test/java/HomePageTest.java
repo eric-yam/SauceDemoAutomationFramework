@@ -1,9 +1,11 @@
-import org.example.Pages.HomePage;
-import org.example.Pages.LoginPage;
+import org.example.Pages.HomePage.HomePage;
+import org.example.Pages.HomePage.Product;
+import org.example.Pages.LoginPage.LoginPage;
+import org.example.Pages.ProductPage.ProductPage;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
-public class
-HomePageTest extends BaseTest {
+public class HomePageTest extends BaseTest {
 
     @Test
     public void Test_1() {
@@ -12,7 +14,8 @@ HomePageTest extends BaseTest {
         loginPage.login("standard_user", "secret_sauce");
 
         HomePage homePage = new HomePage(this.driver);
-        String[] expectedProductNames = {"Sauce Labs Backpack",
+        String[] expectedProductNames = {
+                "Sauce Labs Backpack",
                 "Sauce Labs Bike Light",
                 "Sauce Labs Bolt T-Shirt",
                 "Sauce Labs Fleece Jacket",
@@ -35,18 +38,47 @@ HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(this.driver);
         homePage.applyFilter("Name (A to Z)");
         homePage.setOrderOfProductList();
-        assert (homePage.orderByNameAscend() == true);
+        assert (homePage.orderByNameAscend());
 
         homePage.applyFilter("Name (Z to A)");
         homePage.setOrderOfProductList();
-        assert (homePage.orderByNameDescend() == true);
+        assert (homePage.orderByNameDescend());
 
         homePage.applyFilter("Price (low to high)");
         homePage.setOrderOfProductList();
-        assert (homePage.orderByPriceAscend() == true);
+        assert (homePage.orderByPriceAscend());
 
         homePage.applyFilter("Price (high to low)");
         homePage.setOrderOfProductList();
-        assert (homePage.orderByPriceDescend() == true);
+        assert (homePage.orderByPriceDescend());
+    }
+
+    @Test
+    public void Test_3() {
+        LoginPage loginPage = new LoginPage(this.driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        String[] productsToSelect = {
+                "Sauce Labs Backpack",
+                "Sauce Labs Bike Light",
+                "Sauce Labs Bolt T-Shirt",
+                "Sauce Labs Fleece Jacket",
+                "Sauce Labs Onesie"
+        };
+
+        this.addProductsToCart(this.driver, productsToSelect);
+    }
+
+    //Helper Functions
+    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
+        HomePage homePage = new HomePage(driver);
+        for (String s : productsToSelect) {
+            Product p = homePage.clickProduct(s);
+            ProductPage pp = new ProductPage(driver, p);
+
+            pp.clickAddToCartButton();
+            pp.clickBackButton();
+            homePage.waitForHomePage();
+        }
     }
 }

@@ -41,4 +41,8 @@ public abstract class BasePage extends Base {
             return false;
         }
     }
+
+    public boolean topNavigationBarDisplayed() {
+        return this.hamBurgMenuDisplayed() && this.shoppingCartDisplayed();
+    }
 }

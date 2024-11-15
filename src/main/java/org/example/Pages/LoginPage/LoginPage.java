@@ -1,4 +1,4 @@
-package org.example.Pages;
+package org.example.Pages.LoginPage;
 
 import org.example.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.NoSuchElementException;
