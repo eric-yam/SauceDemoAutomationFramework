@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 public class ProductPage extends BasePage {
     @FindBy(className = "btn_primary")
     private WebElement addToCartButton;
-
     @FindBy(className = "btn_secondary")
     private WebElement removeButton;
     @FindBy(className = "inventory_details_back_button")

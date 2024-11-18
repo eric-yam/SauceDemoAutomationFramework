@@ -12,9 +12,16 @@ import java.util.List;
 
 public class ProductCollector extends BaseObject {
 
+    //Locators
     @FindBy(className = "inventory_item")
     public List<WebElement> webElProducts;
+    private final String inventoryItems = "inventory_item";
+    private final String productName = "inventory_item_name";
+    private final String productPrice = "inventory_item_price";
+    private final String productImg = "inventory_item_img";
+    private final String addToCartButton = "btn_primary";
 
+    //Product
     private List<Product> productsList;
 
     public ProductCollector(WebDriver driver) {
@@ -25,8 +32,8 @@ public class ProductCollector extends BaseObject {
         this.productsList = new ArrayList<>();
 
         for (WebElement webElProduct : this.webElProducts) {
-            String name = webElProduct.findElement(By.className("inventory_item_name")).getText();
-            String priceStr = webElProduct.findElement(By.className("inventory_item_price")).getText();
+            String name = webElProduct.findElement(By.className(this.productName)).getText();
+            String priceStr = webElProduct.findElement(By.className(this.productPrice)).getText();
 
             double price = Double.parseDouble(priceStr.replace("$", ""));
 
@@ -38,8 +45,14 @@ public class ProductCollector extends BaseObject {
 
     public void clickProductByIndex(int index) {
         WebElement el = this.webElProducts.get(index);
-        el.findElement(By.className("inventory_item_img")).click();
-        this.waitForInvisibilityOfElement(el);
+        el.findElement(By.className(this.productImg)).click();
+        this.waitForInvisibilityOfElement(By.className(this.inventoryItems));
+    }
+
+    public void clickAddProductToCart(int index) {
+        WebElement el = this.webElProducts.get(index).findElement(By.className(this.addToCartButton));
+        el.click();
+        this.waitForTextToChange(el, "REMOVE");
     }
 
     public List<Product> getProductsList() {

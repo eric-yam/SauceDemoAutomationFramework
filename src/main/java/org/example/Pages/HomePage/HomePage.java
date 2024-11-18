@@ -12,7 +12,6 @@ public class HomePage extends BasePage {
 
     @FindBy(className = "product_label")
     WebElement pageTitle;
-
     @FindBy(className = "product_sort_container")
     WebElement filterButton;
     @FindBy(xpath = "//Select[@Class='product_sort_container']//option")
@@ -38,6 +37,11 @@ public class HomePage extends BasePage {
         this.waitForVisibilityOfElement(this.pageTitle);
     }
 
+    public void clickProductAddToCart(String productName) {
+        int index = this.indexOfProduct(productName);
+        this.productCollector.clickAddProductToCart(index);
+    }
+
     public Product clickProduct(String productName) {
         int index = this.indexOfProduct(productName);
         this.productCollector.clickProductByIndex(index);
@@ -61,7 +65,7 @@ public class HomePage extends BasePage {
 
     public void setOrderOfProductList() {
         // Subsequent updates to the order of product list must invoke this method again
-        // To update ProductCollector for instance of HomePage
+        // To update ProductCollector for its instance in HomePage
 
         ProductCollector pc = new ProductCollector(this.driver);
         pc.init();

@@ -2,6 +2,9 @@ import org.example.Pages.HomePage.HomePage;
 import org.example.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 public class LoginTests extends BaseTest {
     @Test
     public void Test_1() {
@@ -13,7 +16,7 @@ public class LoginTests extends BaseTest {
 
         //Verify login successful by validating we are on the homepage
         HomePage homePage = new HomePage(this.driver);
-        assert (homePage.topNavigationBarDisplayed() == true);
+        assertTrue(homePage.topNavigationBarDisplayed());
 
     }
 
@@ -24,10 +27,10 @@ public class LoginTests extends BaseTest {
         loginPage.inputUserName("standard_user");
         loginPage.inputPassword("invalid_password");
         loginPage.clickLoginButton();
-        assert (loginPage.isErrorMsgDisplayed() == true);
+        assertTrue (loginPage.isErrorMsgDisplayed());
 
         loginPage.clickClearErrorButton();
-        assert (loginPage.isErrorMsgDisplayed() == false);
+        assertFalse(loginPage.isErrorMsgDisplayed());
 
     }
 }

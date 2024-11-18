@@ -1,12 +1,15 @@
 import org.example.Pages.HomePage.HomePage;
-import org.example.Pages.HomePage.Product;
 import org.example.Pages.LoginPage.LoginPage;
-import org.example.Pages.ProductPage.ProductPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HomePageTest extends BaseTest {
-
+//    automation:
+//    need to add logging
+//    implement ci/cd
+//    allure reporting
+//    implement cucumber bdd
     @Test
     public void Test_1() {
         //Refactor to move test variables into separate test configuration file
@@ -27,7 +30,7 @@ public class HomePageTest extends BaseTest {
             productFound = productFound && (!homePage.getProductByName(expectedProductNames[i]).isEmpty());
         }
 
-        assert (productFound == true);
+        assertTrue(productFound);
     }
 
     @Test
@@ -54,10 +57,9 @@ public class HomePageTest extends BaseTest {
     }
 
     @Test
-    public void Test_3() {
+    public void Test_3(){
         LoginPage loginPage = new LoginPage(this.driver);
         loginPage.login("standard_user", "secret_sauce");
-
         String[] productsToSelect = {
                 "Sauce Labs Backpack",
                 "Sauce Labs Bike Light",
@@ -66,19 +68,8 @@ public class HomePageTest extends BaseTest {
                 "Sauce Labs Onesie"
         };
 
-        this.addProductsToCart(this.driver, productsToSelect);
-    }
+        HomePage homePage = new HomePage(this.driver);
+        homePage.clickProductAddToCart("Sauce Labs Backpack");
 
-    //Helper Functions
-    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
-        HomePage homePage = new HomePage(driver);
-        for (String s : productsToSelect) {
-            Product p = homePage.clickProduct(s);
-            ProductPage pp = new ProductPage(driver, p);
-
-            pp.clickAddToCartButton();
-            pp.clickBackButton();
-            homePage.waitForHomePage();
-        }
     }
 }

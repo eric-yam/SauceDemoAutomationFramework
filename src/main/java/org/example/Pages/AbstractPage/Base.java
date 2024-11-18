@@ -1,5 +1,6 @@
 package org.example.Pages.AbstractPage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -20,11 +21,15 @@ public abstract class Base {
         PageFactory.initElements(driver, this);
     }
 
-    public void waitForInvisibilityOfElement(WebElement el) {
-        wait.until(ExpectedConditions.invisibilityOf(el));
+    public void waitForInvisibilityOfElement(By by) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(by));
     }
 
     public void waitForVisibilityOfElement(WebElement el) {
         wait.until(ExpectedConditions.visibilityOf(el));
+    }
+
+    public void waitForTextToChange(WebElement el, String expectedStr) {
+        wait.until(ExpectedConditions.textToBePresentInElement(el,expectedStr));
     }
 }
