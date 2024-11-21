@@ -1,3 +1,4 @@
+import org.example.Pages.CheckoutPage.CheckoutFinishPage;
 import org.example.Pages.CheckoutPage.CheckoutInformationPage;
 import org.example.Pages.CheckoutPage.CheckoutOverviewPage;
 import org.example.Pages.HomePage.HomePage;
@@ -58,6 +59,10 @@ public class CheckoutTest extends BaseTest {
         assertEquals(cop.getSummaryTaxTotalLabel(), cop.calculateTaxAndSubTotal());
         assertEquals(cop.getSummaryTotalLabel(), cop.calculateTotal());
 
+        cop.clickFinishButton();
+
+        CheckoutFinishPage cfp = new CheckoutFinishPage(this.driver);
+        assertTrue(cfp.verifyFinishPage());
     }
 
     public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
