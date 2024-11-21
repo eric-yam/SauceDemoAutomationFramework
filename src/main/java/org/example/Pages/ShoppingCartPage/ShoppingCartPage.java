@@ -11,6 +11,8 @@ import java.util.List;
 public class ShoppingCartPage extends BasePage {
     private final String quantity = "cart_quantity";
     private final String productName = "inventory_item_name";
+
+    private final String productPrice = "inventory_item_price";
     private final String removeButton = "cart_button";
 //    private final String removeButton = ".//button[@class='btn_secondary cart_button']";
 
@@ -23,6 +25,14 @@ public class ShoppingCartPage extends BasePage {
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void clickContinueShoppingButton() {
+        this.continueShoppingButton.click();
+    }
+
+    public void clickCheckoutButton() {
+        this.checkoutButton.click();
     }
 
     public int getIndexOfCartItemByName(String productName) {
@@ -43,5 +53,16 @@ public class ShoppingCartPage extends BasePage {
 
     public int getNumberOfProductsInCart() {
         return this.cartList.size();
+    }
+
+    public double calculateSubTotal() {
+        double result = 0;
+        for (int i = 0; i < this.cartList.size(); i++) {
+            String temp = this.cartList.get(i).findElement(By.className(this.productPrice)).getText();
+            double price = Double.parseDouble(temp.replace("$", ""));
+            int quantity = Integer.parseInt(this.cartList.get(i).findElement(By.className(this.quantity)).getText());
+            result += price * quantity;
+        }
+        return result;
     }
 }

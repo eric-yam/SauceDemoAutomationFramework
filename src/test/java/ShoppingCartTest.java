@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShoppingCartTest extends BaseTest {
 
+    //Test adding products to cart and then removing all products in cart
     @Test
     public void Test_1() {
         LoginPage loginPage = new LoginPage(this.driver);
@@ -43,6 +44,55 @@ public class ShoppingCartTest extends BaseTest {
         this.removeProductsShoppingCart(this.driver, productsToRemove);
         //verify they've been removed
         assertEquals(scp.getNumberOfProductsInCart(), 0);
+    }
+
+    //Test functionality of buttons on shopping cart page
+    @Test
+    public void Test_2() {
+        LoginPage loginPage = new LoginPage(this.driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        HomePage homePage = new HomePage(driver);
+        homePage.waitForHomePage();
+
+        String[] productsToSelect = {
+                "Sauce Labs Backpack",
+                "Sauce Labs Bike Light"
+        };
+
+        this.addProductsToCart(this.driver, productsToSelect);
+        homePage.clickShoppingCart();
+
+        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        scp.clickContinueShoppingButton();
+        homePage.clickShoppingCart();
+        scp.clickCheckoutButton();
+    }
+
+    //Test cases for verifying total cost of items being purchased
+    @Test
+    public void Test_3() {
+        LoginPage loginPage = new LoginPage(this.driver);
+        loginPage.login("standard_user", "secret_sauce");
+
+        HomePage homePage = new HomePage(driver);
+        homePage.waitForHomePage();
+
+        String[] productsToSelect = {
+                "Sauce Labs Backpack",
+                "Sauce Labs Bike Light",
+                "Sauce Labs Bolt T-Shirt",
+                "Sauce Labs Fleece Jacket",
+                "Sauce Labs Onesie"
+        };
+
+        double expectedSubTotal = 113.95;
+
+        this.addProductsToCart(this.driver, productsToSelect);
+        homePage.clickShoppingCart();
+
+        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        assertEquals(scp.calculateSubTotal(), expectedSubTotal);
     }
 
     //Helper Functions

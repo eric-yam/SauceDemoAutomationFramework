@@ -12,6 +12,9 @@ public abstract class BasePage extends Base {
     @FindBy(xpath = "//*[local-name()='svg']")
     private WebElement shoppingCart;
 
+    @FindBy(xpath = "//h3[@data-test='error']")
+    private WebElement errorMsg;
+
     public BasePage(WebDriver driver) {
         super(driver);
     }
@@ -44,5 +47,14 @@ public abstract class BasePage extends Base {
 
     public boolean topNavigationBarDisplayed() {
         return this.hamBurgMenuDisplayed() && this.shoppingCartDisplayed();
+    }
+
+    public boolean isErrorMsgDisplayed() {
+        try {
+            errorMsg.isDisplayed();
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
     }
 }

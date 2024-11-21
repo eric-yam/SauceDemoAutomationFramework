@@ -56,6 +56,7 @@ public class HomePageTest extends BaseTest {
         assert (homePage.orderByPriceDescend());
     }
 
+    //Verify we can add items to cart through the homespage
     @Test
     public void Test_3(){
         LoginPage loginPage = new LoginPage(this.driver);
@@ -69,7 +70,11 @@ public class HomePageTest extends BaseTest {
         };
 
         HomePage homePage = new HomePage(this.driver);
-        homePage.clickProductAddToCart("Sauce Labs Backpack");
+//        homePage.clickProductAddToCart("Sauce Labs Backpack");
+
+        for (String s : productsToSelect) {
+            homePage.clickProductAddToCart(s);
+        }
 
     }
 }

@@ -25,9 +25,6 @@ public class LoginPage extends BasePage {
     @FindBy(id = "login-button")
     private WebElement loginButton;
 
-    @FindBy(xpath = "//h3[@data-test='error']")
-    private WebElement errorMsg;
-
     @FindBy(className = "error-button")
     private WebElement clearErrorButton;
 
@@ -56,14 +53,5 @@ public class LoginPage extends BasePage {
 
     public void clickClearErrorButton() {
         this.clearErrorButton.click();
-    }
-
-    public boolean isErrorMsgDisplayed() {
-        try {
-            errorMsg.isDisplayed();
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
     }
 }
