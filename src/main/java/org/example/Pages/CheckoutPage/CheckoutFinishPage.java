@@ -13,7 +13,6 @@ public class CheckoutFinishPage extends BasePage {
     WebElement verificationMsg;
     @FindBy(className = "pony_express")
     WebElement ponyExpressImg;
-
     private String expectedHeaderMsg = "THANK YOU FOR YOUR ORDER";
     private String expectedVerificationMsg = "Your order has been dispatched, and will arrive just as " +
             "fast as the pony can get there!";
@@ -22,7 +21,7 @@ public class CheckoutFinishPage extends BasePage {
         super(driver);
     }
 
-    public boolean verifyFinishPage() {
+    public boolean verifyFinishPageDisplayed() {
         this.waitForVisibilityOfElement(this.ponyExpressImg);
         return this.headerMsg.getText().equals(this.expectedHeaderMsg)
                 && this.verificationMsg.getText().equals(this.expectedVerificationMsg);

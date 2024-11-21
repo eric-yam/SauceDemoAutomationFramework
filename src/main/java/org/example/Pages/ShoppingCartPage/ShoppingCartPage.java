@@ -11,7 +11,6 @@ import java.util.List;
 public class ShoppingCartPage extends BasePage {
     private final String quantity = "cart_quantity";
     private final String productName = "inventory_item_name";
-
     private final String productPrice = "inventory_item_price";
     private final String removeButton = "cart_button";
 //    private final String removeButton = ".//button[@class='btn_secondary cart_button']";

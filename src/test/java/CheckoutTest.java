@@ -62,7 +62,7 @@ public class CheckoutTest extends BaseTest {
         cop.clickFinishButton();
 
         CheckoutFinishPage cfp = new CheckoutFinishPage(this.driver);
-        assertTrue(cfp.verifyFinishPage());
+        assertTrue(cfp.verifyFinishPageDisplayed());
     }
 
     public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
