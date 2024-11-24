@@ -1,28 +1,19 @@
 package org.example.Pages.CheckoutPage;
 
+import org.example.Components.CartList;
 import org.example.Pages.AbstractPage.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
-
 public class CheckoutOverviewPage extends BasePage {
     private final String quantity = "summary_quantity";
-    private final String productName = "inventory_item_name";
-    private final String productPrice = "inventory_item_price";
-
-    private final double tax = 1.08;
-
-    @FindBy(className = "cart_item")
-    List<WebElement> cartList;
+    private final CartList cartList;
 
     @FindBy(className = "btn_action")
     private WebElement finishButton;
     @FindBy(className = "cart_cancel_link")
     private WebElement cancelButton;
-
     @FindBy(className = "summary_subtotal_label")
     private WebElement summarySubTotal;
     @FindBy(className = "summary_tax_label")
@@ -32,6 +23,7 @@ public class CheckoutOverviewPage extends BasePage {
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
+        this.cartList = new CartList(driver, this.quantity);
     }
 
     public void clickFinishButton() {
@@ -40,16 +32,6 @@ public class CheckoutOverviewPage extends BasePage {
 
     public void clickCancelButton() {
         this.cancelButton.click();
-    }
-
-    public int getIndexOfCartItemByName(String productName) {
-        for (int i = 0; i < this.cartList.size(); i++) {
-            WebElement item = this.cartList.get(i);
-            if (item.findElement(By.className(this.productName)).getText().equals(productName)) {
-                return i;
-            }
-        }
-        return -1;
     }
 
     public String getLabelValue(WebElement element) {
@@ -72,18 +54,11 @@ public class CheckoutOverviewPage extends BasePage {
     }
 
     public int getNumberOfProductsInCart() {
-        return this.cartList.size();
+        return cartList.getCartSize();
     }
 
     public double calculateSubTotal() {
-        double result = 0;
-        for (int i = 0; i < this.cartList.size(); i++) {
-            String temp = this.cartList.get(i).findElement(By.className(this.productPrice)).getText();
-            double price = Double.parseDouble(temp.replace("$", ""));
-            int quantity = Integer.parseInt(this.cartList.get(i).findElement(By.className(this.quantity)).getText());
-            result += price * quantity;
-        }
-        return result;
+        return cartList.calculateSubTotal();
     }
 
     public double calculateTax() {
@@ -96,7 +71,6 @@ public class CheckoutOverviewPage extends BasePage {
     }
 
     public double calculateTotal() {
-        double result = Math.round(this.calculateSubTotal() * this.tax * 100);
-        return result / 100;
+        return cartList.calculateTotal();
     }
 }
