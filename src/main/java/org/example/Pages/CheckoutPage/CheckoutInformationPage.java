@@ -1,12 +1,13 @@
 package org.example.Pages.CheckoutPage;
 
 import org.example.Pages.AbstractPage.BasePage;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutInformationPage extends BasePage {
+    @FindBy(className = "subheader")
+    private WebElement pageTitle;
 
     @FindBy(id = "first-name")
     private WebElement inputFirstName;
@@ -19,11 +20,16 @@ public class CheckoutInformationPage extends BasePage {
 
     @FindBy(className = "cart_cancel_link")
     private WebElement cancelButton;
+
     @FindBy(className = "cart_button")
     private WebElement continueButton;
 
     public CheckoutInformationPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void waitForCheckoutInformationPage() {
+        this.waitForVisibilityOfElement(this.pageTitle);
     }
 
     public void clickCancelButton() {

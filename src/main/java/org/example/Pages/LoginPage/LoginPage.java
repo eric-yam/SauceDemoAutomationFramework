@@ -1,7 +1,6 @@
 package org.example.Pages.LoginPage;
 
 import org.example.Pages.AbstractPage.BasePage;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,7 +32,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
         this.inputUserName(username);
         this.inputPassword(password);
         this.clickLoginButton();

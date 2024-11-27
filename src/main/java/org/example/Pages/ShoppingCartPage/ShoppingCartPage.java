@@ -10,18 +10,27 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class ShoppingCartPage extends BasePage {
+    @FindBy(xpath = "//div//descendant::a[@class='btn_secondary']")
+    private WebElement continueShoppingButton;
+
+    @FindBy(className = "checkout_button")
+    private WebElement checkoutButton;
+
+    @FindBy(className = "subheader")
+    private WebElement pageTitle;
+
+    private final CartList cartList;
     private final String quantity = "cart_quantity";
     private final String removeButton = "cart_button";
     //    private final String removeButton = ".//button[@class='btn_secondary cart_button']";
-    private final CartList cartList;
-    @FindBy(xpath = "//div//descendant::a[@class='btn_secondary']")
-    private WebElement continueShoppingButton;
-    @FindBy(className = "checkout_button")
-    private WebElement checkoutButton;
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
         this.cartList = new CartList(driver, this.quantity);
+    }
+
+    public void waitForShoppingCartPage() {
+        this.waitForVisibilityOfElement(this.pageTitle);
     }
 
     public void clickContinueShoppingButton() {

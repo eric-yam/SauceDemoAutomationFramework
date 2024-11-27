@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductCollector extends BaseObject {
-
     //Locators
     @FindBy(className = "inventory_item")
     public List<WebElement> webElProducts;
+
     private final String inventoryItems = "inventory_item";
     private final String productName = "inventory_item_name";
     private final String productPrice = "inventory_item_price";

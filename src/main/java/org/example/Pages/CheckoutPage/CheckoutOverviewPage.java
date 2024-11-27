@@ -7,23 +7,34 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutOverviewPage extends BasePage {
-    private final String quantity = "summary_quantity";
-    private final CartList cartList;
+    @FindBy(className = "subheader")
+    private WebElement pageTitle;
 
     @FindBy(className = "btn_action")
     private WebElement finishButton;
+
     @FindBy(className = "cart_cancel_link")
     private WebElement cancelButton;
+
     @FindBy(className = "summary_subtotal_label")
     private WebElement summarySubTotal;
+
     @FindBy(className = "summary_tax_label")
     private WebElement summaryTaxTotal;
+
     @FindBy(className = "summary_total_label")
     private WebElement summaryTotal;
+
+    private final String quantity = "summary_quantity";
+    private final CartList cartList;
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
         this.cartList = new CartList(driver, this.quantity);
+    }
+
+    public void waitForCheckoutOverviewPage() {
+        this.waitForVisibilityOfElement(this.pageTitle);
     }
 
     public void clickFinishButton() {

@@ -1,5 +1,7 @@
 package org.example.Pages.AbstractPage;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,11 +14,12 @@ import java.time.Duration;
 public abstract class Base {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected Logger log;
 
     public Base(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-
+        this.log = LogManager.getLogger(this);
 //        PageFactory.initElements(this.driver, this.getClass());
         PageFactory.initElements(driver, this);
     }
@@ -30,6 +33,6 @@ public abstract class Base {
     }
 
     public void waitForTextToChange(WebElement el, String expectedStr) {
-        wait.until(ExpectedConditions.textToBePresentInElement(el,expectedStr));
+        wait.until(ExpectedConditions.textToBePresentInElement(el, expectedStr));
     }
 }

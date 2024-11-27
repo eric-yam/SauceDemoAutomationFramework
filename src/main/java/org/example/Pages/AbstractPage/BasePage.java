@@ -9,6 +9,7 @@ public abstract class BasePage extends Base {
 
     @FindBy(xpath = "//div[@class='bm-burger-button']//button")
     private WebElement hamBurgMenu;
+
     @FindBy(xpath = "//*[local-name()='svg']")
     private WebElement shoppingCart;
 

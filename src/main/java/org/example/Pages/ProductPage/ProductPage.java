@@ -7,10 +7,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class ProductPage extends BasePage {
+
+    @FindBy(className = "inventory_details_img")
+    private WebElement productImg;
+
     @FindBy(className = "btn_primary")
     private WebElement addToCartButton;
+
     @FindBy(className = "btn_secondary")
     private WebElement removeButton;
+
     @FindBy(className = "inventory_details_back_button")
     private WebElement backButton;
 
@@ -19,6 +25,10 @@ public class ProductPage extends BasePage {
     public ProductPage(WebDriver driver, Product p) {
         super(driver);
         this.product = p;
+    }
+
+    public void waitForProductPage() {
+        this.waitForVisibilityOfElement(this.productImg);
     }
 
     public void clickAddToCartButton() {

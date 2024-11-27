@@ -9,18 +9,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage extends BasePage {
-
     @FindBy(className = "product_label")
     WebElement pageTitle;
+
     @FindBy(className = "product_sort_container")
     WebElement filterButton;
+
     @FindBy(xpath = "//Select[@Class='product_sort_container']//option")
     List<WebElement> filterOptions;
+
     ProductCollector productCollector;
 
     public HomePage(WebDriver driver) {
         super(driver);
         this.setOrderOfProductList();
+    }
+
+    public void setOrderOfProductList() {
+        // Subsequent updates to the order of product list must invoke this method again
+        // To update ProductCollector for its instance in HomePage
+
+        ProductCollector pc = new ProductCollector(this.driver);
+        pc.init();
+        this.productCollector = pc;
     }
 
     public void applyFilter(String filter) {
@@ -61,15 +72,6 @@ public class HomePage extends BasePage {
             }
         }
         return -1;
-    }
-
-    public void setOrderOfProductList() {
-        // Subsequent updates to the order of product list must invoke this method again
-        // To update ProductCollector for its instance in HomePage
-
-        ProductCollector pc = new ProductCollector(this.driver);
-        pc.init();
-        this.productCollector = pc;
     }
 
     public List<Product> getProductByName(String productName) {

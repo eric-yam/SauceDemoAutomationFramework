@@ -1,0 +1,10 @@
+14:39:11.232 [main] INFO  org.example.Pages.LoginPage.LoginPage - Successfully loaded page locators for page: org.example.Pages.LoginPage.LoginPage@3c2772d1
+14:39:11.292 [main] INFO  org.example.Pages.LoginPage.LoginPage - Entered username.
+14:39:11.736 [main] INFO  org.example.Pages.HomePage.HomePage - Successfully loaded page locators for page: org.example.Pages.HomePage.HomePage@4463d9d3
+14:39:11.737 [main] INFO  org.example.Pages.HomePage.ProductCollector - Successfully loaded page locators for page: org.example.Pages.HomePage.ProductCollector@1517f633
+14:39:11.786 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@68e62ca4
+14:39:11.809 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@588ffeb
+14:39:11.831 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@30af7377
+14:39:11.852 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@5d58c727
+14:39:11.873 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@5ecba515
+14:39:11.893 [main] INFO  org.example.Pages.HomePage.Product - Successfully loaded page locators for page: org.example.Pages.HomePage.Product@29314cc9
