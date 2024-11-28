@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutOverviewPage extends BasePage {
+    private static final String QUANTITY = "summary_quantity";
+
     @FindBy(className = "subheader")
     private WebElement pageTitle;
 
@@ -25,12 +27,11 @@ public class CheckoutOverviewPage extends BasePage {
     @FindBy(className = "summary_total_label")
     private WebElement summaryTotal;
 
-    private final String quantity = "summary_quantity";
     private final CartList cartList;
 
     public CheckoutOverviewPage(WebDriver driver) {
         super(driver);
-        this.cartList = new CartList(driver, this.quantity);
+        this.cartList = new CartList(driver, this.QUANTITY);
     }
 
     public void waitForCheckoutOverviewPage() {

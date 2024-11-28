@@ -10,6 +10,9 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 public class ShoppingCartPage extends BasePage {
+    private static final String QUANTITY = "cart_quantity";
+    private static final String REMOVE_BUTTON = "cart_button";
+
     @FindBy(xpath = "//div//descendant::a[@class='btn_secondary']")
     private WebElement continueShoppingButton;
 
@@ -20,13 +23,12 @@ public class ShoppingCartPage extends BasePage {
     private WebElement pageTitle;
 
     private final CartList cartList;
-    private final String quantity = "cart_quantity";
-    private final String removeButton = "cart_button";
+
     //    private final String removeButton = ".//button[@class='btn_secondary cart_button']";
 
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
-        this.cartList = new CartList(driver, this.quantity);
+        this.cartList = new CartList(driver, QUANTITY);
     }
 
     public void waitForShoppingCartPage() {
@@ -45,7 +47,7 @@ public class ShoppingCartPage extends BasePage {
         List<WebElement> cartListElements = this.cartList.getCartList();
         int index = this.getIndexOfCartItemByName(productName);
 
-        cartListElements.get(index).findElement(By.className(this.removeButton)).click();
+        cartListElements.get(index).findElement(By.className(REMOVE_BUTTON)).click();
 //        this.cartList.get(index).findElement(By.xpath(this.removeButton)).click();
     }
 

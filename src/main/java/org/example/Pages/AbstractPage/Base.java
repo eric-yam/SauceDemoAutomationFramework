@@ -14,12 +14,12 @@ import java.time.Duration;
 public abstract class Base {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    protected Logger log;
+//    protected Logger log;
 
     public Base(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(this.driver, Duration.ofSeconds(5));
-        this.log = LogManager.getLogger(this);
+//        this.log = LogManager.getLogger(this);
 //        PageFactory.initElements(this.driver, this.getClass());
         PageFactory.initElements(driver, this);
     }

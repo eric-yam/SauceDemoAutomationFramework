@@ -6,6 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class CheckoutFinishPage extends BasePage {
+    private static final String EXPECTED_HEADER_MSG = "THANK YOU FOR YOUR ORDER";
+    private static final String EXPECTED_VERIFICATION_MSG = "Your order has been dispatched, and will arrive just as " +
+            "fast as the pony can get there!";
+
     @FindBy(className = "subheader")
     private WebElement pageTitle;
 
@@ -18,10 +22,6 @@ public class CheckoutFinishPage extends BasePage {
     @FindBy(className = "pony_express")
     WebElement ponyExpressImg;
 
-    private String expectedHeaderMsg = "THANK YOU FOR YOUR ORDER";
-    private String expectedVerificationMsg = "Your order has been dispatched, and will arrive just as " +
-            "fast as the pony can get there!";
-
     public CheckoutFinishPage(WebDriver driver) {
         super(driver);
     }
@@ -32,7 +32,7 @@ public class CheckoutFinishPage extends BasePage {
 
     public boolean verifyFinishPageDisplayed() {
         this.waitForVisibilityOfElement(this.ponyExpressImg);
-        return this.headerMsg.getText().equals(this.expectedHeaderMsg)
-                && this.verificationMsg.getText().equals(this.expectedVerificationMsg);
+        return this.headerMsg.getText().equals(EXPECTED_HEADER_MSG)
+                && this.verificationMsg.getText().equals(EXPECTED_VERIFICATION_MSG);
     }
 }
