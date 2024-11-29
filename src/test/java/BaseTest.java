@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
-    WebDriver driver;
+    static WebDriver driver;
     Logger log;
 
     @BeforeEach
@@ -23,4 +23,8 @@ public class BaseTest {
     public void cleanUp() {
         driver.quit();
     }
+
+    //TODO: Open Allure report automatically after execution
+    //TODO: Take screenshot whenever a failure occurs
+    //TODO: Add allure steps annotations
 }

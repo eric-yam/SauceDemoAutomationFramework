@@ -1,5 +1,6 @@
 package org.example.Pages.ShoppingCartPage;
 
+import io.qameta.allure.Step;
 import org.example.Components.CartList;
 import org.example.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.By;
@@ -31,34 +32,36 @@ public class ShoppingCartPage extends BasePage {
         this.cartList = new CartList(driver, QUANTITY);
     }
 
+    @Step("Wait For Shopping Cart Page")
     public void waitForShoppingCartPage() {
         this.waitForVisibilityOfElement(this.pageTitle);
     }
 
+    @Step("Click Continue Shopping Button")
     public void clickContinueShoppingButton() {
         this.continueShoppingButton.click();
     }
 
+    @Step("Click Checkout Button")
     public void clickCheckoutButton() {
         this.checkoutButton.click();
     }
 
+    @Step("Remove Product [{0}] From Shopping Cart")
     public void clickRemoveItem(String productName) {
         List<WebElement> cartListElements = this.cartList.getCartList();
-        int index = this.getIndexOfCartItemByName(productName);
+        int index = this.cartList.getIndexOfCartItemByName(productName);
 
         cartListElements.get(index).findElement(By.className(REMOVE_BUTTON)).click();
 //        this.cartList.get(index).findElement(By.xpath(this.removeButton)).click();
     }
 
-    public int getIndexOfCartItemByName(String productName) {
-        return this.cartList.getIndexOfCartItemByName(productName);
-    }
-
+    @Step("Get Number Of Products In Shopping Cart")
     public int getNumberOfProductsInCart() {
         return this.cartList.getCartSize();
     }
 
+    @Step("Calculate Sub-Total In Shopping Cart")
     public double calculateSubTotal() {
         return this.cartList.calculateSubTotal();
     }

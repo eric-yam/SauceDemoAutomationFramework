@@ -7,11 +7,6 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class HomePageTest extends BaseTest {
-    //    automation:
-//    need to add logging
-//    implement ci/cd
-//    allure reporting
-//    implement cucumber bdd
     String[] expectedProductNames = {
             "Sauce Labs Backpack",
             "Sauce Labs Bike Light",

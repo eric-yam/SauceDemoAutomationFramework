@@ -43,10 +43,10 @@ public class CartList extends BaseObject {
 
     public double calculateSubTotal() {
         double result = 0;
-        for (int i = 0; i < this.cartList.size(); i++) {
-            String temp = this.cartList.get(i).findElement(By.className(PRODUCT_PRICE)).getText();
+        for (WebElement element : this.cartList) {
+            String temp = element.findElement(By.className(PRODUCT_PRICE)).getText();
             double price = Double.parseDouble(temp.replace("$", ""));
-            int quantity = Integer.parseInt(this.cartList.get(i).findElement(By.className(this.quantity)).getText());
+            int quantity = Integer.parseInt(element.findElement(By.className(this.quantity)).getText());
             result += price * quantity;
         }
         return result;

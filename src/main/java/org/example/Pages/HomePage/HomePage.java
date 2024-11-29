@@ -1,5 +1,6 @@
 package org.example.Pages.HomePage;
 
+import io.qameta.allure.Step;
 import org.example.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -34,6 +35,7 @@ public class HomePage extends BasePage {
         this.productCollector = pc;
     }
 
+    @Step("Apply Filter [{0}]")
     public void applyFilter(String filter) {
         this.filterButton.click();
 
@@ -44,15 +46,18 @@ public class HomePage extends BasePage {
         }
     }
 
+    @Step("Wait For Home Page")
     public void waitForHomePage() {
         this.waitForVisibilityOfElement(this.pageTitle);
     }
 
+    @Step("Add Product {0} From Home Page To Shopping Cart")
     public void clickProductAddToCart(String productName) {
         int index = this.indexOfProduct(productName);
         this.productCollector.clickAddProductToCart(index);
     }
 
+    @Step("Click Product [{0}]")
     public Product clickProduct(String productName) {
         int index = this.indexOfProduct(productName);
         this.productCollector.clickProductByIndex(index);
@@ -74,6 +79,7 @@ public class HomePage extends BasePage {
         return -1;
     }
 
+    @Step("Get Product [{0}] By Product Name")
     public List<Product> getProductByName(String productName) {
         List<Product> result = new ArrayList<>();
 
@@ -85,6 +91,7 @@ public class HomePage extends BasePage {
         return result;
     }
 
+    @Step("Verify Products In Ascending Order By Name")
     public boolean orderByNameAscend() {
         boolean isOrder = true;
         List<Product> list = this.productCollector.getProductsList();
@@ -96,6 +103,7 @@ public class HomePage extends BasePage {
         return isOrder;
     }
 
+    @Step("Verify Products In Descending Order By Name")
     public boolean orderByNameDescend() {
         boolean isOrder = true;
         List<Product> list = this.productCollector.getProductsList();
@@ -107,6 +115,7 @@ public class HomePage extends BasePage {
         return isOrder;
     }
 
+    @Step("Verify Products In Ascending Order By Price")
     public boolean orderByPriceAscend() {
         boolean isOrder = true;
         List<Product> list = this.productCollector.getProductsList();
@@ -117,6 +126,7 @@ public class HomePage extends BasePage {
         return isOrder;
     }
 
+    @Step("Verify Products In Descending Order By Price")
     public boolean orderByPriceDescend() {
         boolean isOrder = true;
         List<Product> list = this.productCollector.getProductsList();

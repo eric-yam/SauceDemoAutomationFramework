@@ -1,5 +1,6 @@
 package org.example.Pages.ProductPage;
 
+import io.qameta.allure.Step;
 import org.example.Pages.AbstractPage.BasePage;
 import org.example.Pages.HomePage.Product;
 import org.openqa.selenium.WebDriver;
@@ -27,20 +28,24 @@ public class ProductPage extends BasePage {
         this.product = p;
     }
 
+    @Step("Wait For Product Page")
     public void waitForProductPage() {
         this.waitForVisibilityOfElement(this.productImg);
     }
 
+    @Step("Click Add To Cart On Product Page")
     public void clickAddToCartButton() {
         this.addToCartButton.click();
         this.waitForVisibilityOfElement(this.removeButton);
     }
 
+    @Step("Click Remove On Product Page")
     public void clickRemoveButton() {
         this.removeButton.click();
         this.waitForVisibilityOfElement(this.addToCartButton);
     }
 
+    @Step("Click Back Button")
     public void clickBackButton() {
         this.backButton.click();
     }
