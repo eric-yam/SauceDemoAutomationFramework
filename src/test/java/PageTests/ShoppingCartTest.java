@@ -1,3 +1,5 @@
+package PageTests;
+
 import org.example.Pages.CheckoutPage.CheckoutInformationPage;
 import org.example.Pages.HomePage.HomePage;
 import org.example.Pages.HomePage.Product;

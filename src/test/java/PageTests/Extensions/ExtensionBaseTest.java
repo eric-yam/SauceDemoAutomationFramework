@@ -1,3 +1,6 @@
+package PageTests.Extensions;
+
+import PageTests.BaseTest;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -10,6 +13,7 @@ public class ExtensionBaseTest implements AfterTestExecutionCallback{
     @Override
     public void afterTestExecution(ExtensionContext context) throws Exception {
         if (context.getExecutionException().isPresent()) {
+            //Convert ByteArray into InputStream
             Allure.addAttachment("screenshot", new ByteArrayInputStream(takeScreenshot()));
         }
     }

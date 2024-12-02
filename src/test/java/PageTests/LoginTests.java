@@ -1,3 +1,7 @@
+package PageTests;
+
+import PageTests.Extensions.ExtensionBaseTest;
+import PageTests.Extensions.Random;
 import org.example.Pages.HomePage.HomePage;
 import org.example.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
@@ -8,10 +12,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(ExtensionBaseTest.class)
 public class LoginTests extends BaseTest {
+
     String validUsername = "standard_user";
     String validPassword = "secret_sauce";
     String invalidUsername = "invalid_user";
     String invalidPassword = "invalid_password";
+
+//    @Random
+//    private int temporary;
+//    @Random
+//    private static int temporary2;
 
     @Test
     public void Test_1() {

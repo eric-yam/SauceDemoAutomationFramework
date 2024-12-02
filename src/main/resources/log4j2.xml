@@ -7,21 +7,21 @@
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="${LOG_PATTERN}"/>
         </Console>
-        <!--        <File name="MyFile" fileName="logs/pp.log">-->
-        <!--            <PatternLayout>-->
-        <!--                <Pattern>${LOG_PATTERN}</Pattern>-->
-        <!--            </PatternLayout>-->
-        <!--        </File>-->
+<!--        <File name="MyFile" fileName="logs/pp.log">-->
+<!--            <PatternLayout>-->
+<!--                <Pattern>${LOG_PATTERN}</Pattern>-->
+<!--            </PatternLayout>-->
+<!--        </File>-->
 
         <!--        log to output file-->
-        <!--        <RollingFile name="MyFile" filePattern="logs/app-%d{HH-mm-ss-SSS}.log">-->
-        <!--            <PatternLayout>-->
-        <!--                <Pattern>${LOG_PATTERN}</Pattern>-->
-        <!--            </PatternLayout>-->
-        <!--            <Policies>-->
-        <!--                <OnStartupTriggeringPolicy/>-->
-        <!--            </Policies>-->
-        <!--        </RollingFile>-->
+<!--        <RollingFile name="MyFile" filePattern="logs/app-%d{HH-mm-ss-SSS}.log">-->
+<!--            <PatternLayout>-->
+<!--                <Pattern>${LOG_PATTERN}</Pattern>-->
+<!--            </PatternLayout>-->
+<!--            <Policies>-->
+<!--                <OnStartupTriggeringPolicy/>-->
+<!--            </Policies>-->
+<!--        </RollingFile>-->
     </Appenders>
     <Loggers>
         <Root level="info">

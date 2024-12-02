@@ -1,0 +1,9 @@
+14:13:25.254 [main] INFO  PageTests.LoginTests - Successfully inputted valid username: [standard_user]
+14:13:25.316 [main] INFO  PageTests.LoginTests - Successfully inputted valid password: [secret_sauce]
+14:13:25.685 [main] INFO  PageTests.LoginTests - Clicked Login button
+14:13:25.903 [main] INFO  PageTests.LoginTests - Successfully logged in and landed on HomePage
+14:13:27.217 [main] INFO  PageTests.LoginTests - Successfully inputted invalid username: [invalid_user]
+14:13:27.270 [main] INFO  PageTests.LoginTests - Successfully inputted invalid password: [invalid_password]
+14:13:27.321 [main] INFO  PageTests.LoginTests - Clicked Login button
+14:13:27.340 [main] INFO  PageTests.LoginTests - Successfully displayed failed to login message
+14:13:27.393 [main] INFO  PageTests.LoginTests - Successfully cleared error message

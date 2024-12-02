@@ -1,19 +1,20 @@
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+package PageTests;
+
+import io.qameta.allure.Allure;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
-    static WebDriver driver;
-    Logger log;
+    public static WebDriver driver;
+    public MyLogger log;
 
     @BeforeEach
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        log = LogManager.getLogger(this);
+        log = new MyLogger(driver);
 
         //Opens Web
         driver.get("https://www.saucedemo.com/v1/");
@@ -21,6 +22,10 @@ public class BaseTest {
 
     @AfterEach
     public void cleanUp() {
+//        Allure.addAttachment("Console log: ", String.valueOf(driver.manage().logs().get(LogType.BROWSER).getAll()));
+//        LogEntries logEntries = driver.manage().logs().get(LogType.DRIVER);
+//        Allure.addAttachment("Console log: ", String.valueOf(logEntries));
+        Allure.addAttachment("Console log:", String.valueOf(log.getTestConsoleLog()));
         driver.quit();
     }
 
