@@ -33,7 +33,7 @@ public class CheckoutTest extends BaseTest {
 
     @Test
     public void Test_1() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
@@ -42,10 +42,10 @@ public class CheckoutTest extends BaseTest {
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
-        this.addProductsToCart(this.driver, this.productsToSelect);
+        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
 
-        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        ShoppingCartPage scp = new ShoppingCartPage(driver);
         scp.waitForShoppingCartPage();
         log.info("Landed on Shopping Cart Page");
 
@@ -58,7 +58,7 @@ public class CheckoutTest extends BaseTest {
                 "] matches expected subtotal: [" + expectedSubTotal + "]");
         scp.clickCheckoutButton();
 
-        CheckoutInformationPage cip = new CheckoutInformationPage(this.driver);
+        CheckoutInformationPage cip = new CheckoutInformationPage(driver);
         cip.waitForCheckoutInformationPage();
         log.info("Landed on Checkout Information Page");
         cip.clickContinueButton();
@@ -80,7 +80,7 @@ public class CheckoutTest extends BaseTest {
 
         cip.clickContinueButton();
 
-        CheckoutOverviewPage cop = new CheckoutOverviewPage(this.driver);
+        CheckoutOverviewPage cop = new CheckoutOverviewPage(driver);
         cop.waitForCheckoutOverviewPage();
         log.info("Landed on Checkout Overview Page");
 
@@ -102,7 +102,7 @@ public class CheckoutTest extends BaseTest {
 
         cop.clickFinishButton();
 
-        CheckoutFinishPage cfp = new CheckoutFinishPage(this.driver);
+        CheckoutFinishPage cfp = new CheckoutFinishPage(driver);
         cfp.waitCheckoutFinishPage();
         log.info("Landed on Checkout Finish Page");
 

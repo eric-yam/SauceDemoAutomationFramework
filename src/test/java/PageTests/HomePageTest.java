@@ -30,11 +30,11 @@ public class HomePageTest extends BaseTest {
     @Test
     public void Test_1() {
         //Refactor to move test variables into separate test configuration file
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
-        HomePage homePage = new HomePage(this.driver);
+        HomePage homePage = new HomePage(driver);
         homePage.waitForHomePage();
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
@@ -51,11 +51,11 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void Test_2() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login("standard_user", "secret_sauce");
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
-        HomePage homePage = new HomePage(this.driver);
+        HomePage homePage = new HomePage(driver);
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
@@ -83,11 +83,11 @@ public class HomePageTest extends BaseTest {
     //Verify we can add items to cart through the homepage
     @Test
     public void Test_3() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
-        HomePage homePage = new HomePage(this.driver);
+        HomePage homePage = new HomePage(driver);
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 

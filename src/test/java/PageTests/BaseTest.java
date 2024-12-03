@@ -8,13 +8,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
     public static WebDriver driver;
-    public MyLogger log;
+    public LoggerWrapper log;
 
     @BeforeEach
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        log = new MyLogger(driver);
+        log = new LoggerWrapper(driver);
 
         //Opens Web
         driver.get("https://www.saucedemo.com/v1/");
@@ -25,6 +25,8 @@ public class BaseTest {
 //        Allure.addAttachment("Console log: ", String.valueOf(driver.manage().logs().get(LogType.BROWSER).getAll()));
 //        LogEntries logEntries = driver.manage().logs().get(LogType.DRIVER);
 //        Allure.addAttachment("Console log: ", String.valueOf(logEntries));
+
+        //Add attachment to allure report at the end of each test
         Allure.addAttachment("Console log:", String.valueOf(log.getTestConsoleLog()));
         driver.quit();
     }

@@ -35,7 +35,7 @@ public class ShoppingCartTest extends BaseTest {
     //Test adding products to cart and then removing all products in cart
     @Test
     public void Test_1() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
@@ -43,11 +43,11 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        this.addProductsToCart(this.driver, this.productsToSelect);
+        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
 
         //verify they've been added
-        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        ShoppingCartPage scp = new ShoppingCartPage(driver);
         scp.waitForShoppingCartPage();
         log.info("Landed on Shopping Cart Page");
 
@@ -55,7 +55,7 @@ public class ShoppingCartTest extends BaseTest {
         log.info("Successfully validated actual number of items in cart: [" + scp.getNumberOfProductsInCart() +
                 "] match the expected number of items in cart:[" + productsToSelect.length + "]");
 
-        this.removeProductsShoppingCart(this.driver, productsToRemove);
+        this.removeProductsShoppingCart(driver, productsToRemove);
 
         //verify they've been removed
         assertEquals(0, scp.getNumberOfProductsInCart());
@@ -66,7 +66,7 @@ public class ShoppingCartTest extends BaseTest {
     //Test functionality of buttons on shopping cart page
     @Test
     public void Test_2() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
@@ -79,10 +79,10 @@ public class ShoppingCartTest extends BaseTest {
 //                "Sauce Labs Bike Light"
 //        };
 
-        this.addProductsToCart(this.driver, productsToSelect);
+        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
-        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        ShoppingCartPage scp = new ShoppingCartPage(driver);
         scp.waitForShoppingCartPage();
         log.info("Landed on Shopping Cart Page");
 
@@ -96,7 +96,7 @@ public class ShoppingCartTest extends BaseTest {
 
         scp.clickCheckoutButton();
 
-        CheckoutInformationPage cip = new CheckoutInformationPage(this.driver);
+        CheckoutInformationPage cip = new CheckoutInformationPage(driver);
         cip.waitForCheckoutInformationPage();
         log.info("Landed on Checkout Information Page");
     }
@@ -104,7 +104,7 @@ public class ShoppingCartTest extends BaseTest {
     //Test cases for verifying total cost of items being purchased
     @Test
     public void Test_3() {
-        LoginPage loginPage = new LoginPage(this.driver);
+        LoginPage loginPage = new LoginPage(driver);
         loginPage.login(this.username, this.password);
         log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
 
@@ -112,10 +112,10 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        this.addProductsToCart(this.driver, productsToSelect);
+        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
-        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        ShoppingCartPage scp = new ShoppingCartPage(driver);
         scp.waitForShoppingCartPage();
         log.info("Landed on Shopping Cart Page");
 
@@ -139,7 +139,7 @@ public class ShoppingCartTest extends BaseTest {
     }
 
     public void removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
-        ShoppingCartPage scp = new ShoppingCartPage(this.driver);
+        ShoppingCartPage scp = new ShoppingCartPage(driver);
 
         for (String s : productsToRemove) {
             scp.clickRemoveItem(s);
