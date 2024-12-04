@@ -1,7 +1,7 @@
-package org.example.Pages.CheckoutPage;
+package org.PageObjects.Pages.CheckoutPage;
 
-import org.example.Components.CartList;
-import org.example.Pages.AbstractPage.BasePage;
+import org.PageObjects.Components.CartList;
+import org.PageObjects.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

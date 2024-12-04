@@ -1,9 +1,8 @@
 package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
-import PageTests.Extensions.Random;
-import org.example.Pages.HomePage.HomePage;
-import org.example.Pages.LoginPage.LoginPage;
+import org.PageObjects.Pages.HomePage.HomePage;
+import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 

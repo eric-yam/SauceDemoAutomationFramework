@@ -1,6 +1,6 @@
-package org.example.Pages.HomePage;
+package org.PageObjects.Pages.HomePage;
 
-import org.example.Pages.AbstractPage.BaseObject;
+import org.PageObjects.Pages.AbstractPage.BaseObject;
 import org.openqa.selenium.WebDriver;
 
 public class Product extends BaseObject {

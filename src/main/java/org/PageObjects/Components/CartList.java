@@ -1,6 +1,6 @@
-package org.example.Components;
+package org.PageObjects.Components;
 
-import org.example.Pages.AbstractPage.BaseObject;
+import org.PageObjects.Pages.AbstractPage.BaseObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

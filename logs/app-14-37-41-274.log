@@ -1,2 +1,2 @@
-14:37:41.272 [main] INFO  org.example.Pages.LoginPage.LoginPage - Successfully loaded page locators for page: org.example.Pages.LoginPage.LoginPage@3c2772d1
-14:37:41.333 [main] INFO  org.example.Pages.LoginPage.LoginPage - Entered username.
+14:37:41.272 [main] INFO  org.PageObjects.Pages.LoginPage.LoginPage - Successfully loaded page locators for page: org.PageObjects.Pages.LoginPage.LoginPage@3c2772d1
+14:37:41.333 [main] INFO  org.PageObjects.Pages.LoginPage.LoginPage - Entered username.

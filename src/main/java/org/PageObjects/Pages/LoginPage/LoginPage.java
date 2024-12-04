@@ -1,7 +1,7 @@
-package org.example.Pages.LoginPage;
+package org.PageObjects.Pages.LoginPage;
 
 import io.qameta.allure.Step;
-import org.example.Pages.AbstractPage.BasePage;
+import org.PageObjects.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

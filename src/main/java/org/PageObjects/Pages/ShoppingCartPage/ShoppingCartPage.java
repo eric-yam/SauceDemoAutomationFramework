@@ -1,8 +1,8 @@
-package org.example.Pages.ShoppingCartPage;
+package org.PageObjects.Pages.ShoppingCartPage;
 
 import io.qameta.allure.Step;
-import org.example.Components.CartList;
-import org.example.Pages.AbstractPage.BasePage;
+import org.PageObjects.Components.CartList;
+import org.PageObjects.Pages.AbstractPage.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

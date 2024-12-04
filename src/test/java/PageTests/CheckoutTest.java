@@ -1,13 +1,13 @@
 package PageTests;
 
-import org.example.Pages.CheckoutPage.CheckoutFinishPage;
-import org.example.Pages.CheckoutPage.CheckoutInformationPage;
-import org.example.Pages.CheckoutPage.CheckoutOverviewPage;
-import org.example.Pages.HomePage.HomePage;
-import org.example.Pages.HomePage.Product;
-import org.example.Pages.LoginPage.LoginPage;
-import org.example.Pages.ProductPage.ProductPage;
-import org.example.Pages.ShoppingCartPage.ShoppingCartPage;
+import org.PageObjects.Pages.CheckoutPage.CheckoutFinishPage;
+import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
+import org.PageObjects.Pages.CheckoutPage.CheckoutOverviewPage;
+import org.PageObjects.Pages.HomePage.HomePage;
+import org.PageObjects.Pages.HomePage.Product;
+import org.PageObjects.Pages.LoginPage.LoginPage;
+import org.PageObjects.Pages.ProductPage.ProductPage;
+import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
