@@ -15,6 +15,7 @@
         <junit.jupiter.version>5.10.1</junit.jupiter.version>
         <allure.version>2.28.1</allure.version>
         <aspectj.version>1.9.21</aspectj.version>
+        <cucumber.version>7.20.1</cucumber.version>
     </properties>
 
     <dependencies>
@@ -74,6 +75,26 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${aspectj.version}</version>
+        </dependency>
+        <!--        Cucumber-->
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <version>${cucumber.version}</version>
         </dependency>
     </dependencies>
 

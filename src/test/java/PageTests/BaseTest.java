@@ -30,8 +30,4 @@ public class BaseTest {
         Allure.addAttachment("Console log:", String.valueOf(log.getTestConsoleLog()));
         driver.quit();
     }
-
-    //TODO: Open Allure report automatically after execution
-    //TODO: Take screenshot whenever a failure occurs
-    //TODO: Add allure steps annotations
 }
