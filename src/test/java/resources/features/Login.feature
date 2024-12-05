@@ -1,3 +1,4 @@
+@Login
 Feature: Login Tests
 
   Scenario: : Successful Login Test

@@ -13,20 +13,24 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginStepDefinitions {
+public class LoginSteps {
 
     TestContext context;
 
-    public LoginStepDefinitions(TestContext context) {
+    public LoginSteps(TestContext context) {
         this.context = context;
     }
 
-    @Before
+    /*
+     * Adding tags to Before and After annotations specifies that these methods will only
+     * execute on feature files tagged with the specified name in the annotation
+     */
+    @Before("@Login")
     public void setup() {
         this.context.setup();
     }
 
-    @After
+    @After("@Login")
     public void tearDown() {
         this.context.cleanUp();
     }
