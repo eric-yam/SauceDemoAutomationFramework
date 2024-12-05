@@ -43,10 +43,17 @@ public class LoginPage extends BasePage {
 
     @Step("Input Username")
     public void inputUserName(String userNameValue) {
+        if (!this.username.getAttribute("value").isEmpty()) {
+            this.username.clear();
+        }
         this.username.sendKeys(userNameValue);
     }
+
     @Step("Input Password")
     public void inputPassword(String passwordValue) {
+        if (!this.password.getAttribute("value").isEmpty()) {
+            this.password.clear();
+        }
         this.password.sendKeys(passwordValue);
     }
 
