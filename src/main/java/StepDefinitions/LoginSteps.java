@@ -45,8 +45,9 @@ public class LoginSteps {
         for (Map.Entry<String, String> e : map.entrySet()) {
             loginPage.inputUserName(e.getKey());
             loginPage.inputPassword(e.getValue());
+            loginPage.clickLoginButton();
         }
-        loginPage.clickLoginButton();
+//        loginPage.clickLoginButton();
     }
 
     @Then("Validates user successfully logged in")
