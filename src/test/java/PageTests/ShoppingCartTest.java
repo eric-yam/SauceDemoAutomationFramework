@@ -1,16 +1,19 @@
 package PageTests;
 
+import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@ExtendWith(ExtensionBaseTest.class)
 public class ShoppingCartTest extends BaseTest {
     String[] productsToSelect = {
             "Sauce Labs Backpack",

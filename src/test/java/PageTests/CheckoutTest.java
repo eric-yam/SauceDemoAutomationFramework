@@ -1,21 +1,21 @@
 package PageTests;
 
+import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.CheckoutPage.CheckoutFinishPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutOverviewPage;
 import org.PageObjects.Pages.HomePage.HomePage;
-import org.PageObjects.Pages.HomePage.Product;
 import org.PageObjects.Pages.LoginPage.LoginPage;
-import org.PageObjects.Pages.ProductPage.ProductPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@ExtendWith(ExtensionBaseTest.class)
 public class CheckoutTest extends BaseTest {
     String[] productsToSelect = {
             "Sauce Labs Backpack",

@@ -1,5 +1,6 @@
-package PageTests;
+package PageTests.TestBase;
 
+import PageTests.Wrapper.LoggerWrapper;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

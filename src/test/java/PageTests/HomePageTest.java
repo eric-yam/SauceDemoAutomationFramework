@@ -1,14 +1,17 @@
 package PageTests;
 
+import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@ExtendWith(ExtensionBaseTest.class)
 public class HomePageTest extends BaseTest {
     String[] expectedProductNames = {
             "Sauce Labs Backpack",

@@ -15,7 +15,7 @@ class RandomNumberExtension implements BeforeAllCallback {
 
     /**
      * Inject a random integer into static fields that are annotated with
-     * {@code @BaseTest.Extensions.Random} and can be assigned an integer value.
+     * {@code @PageTests.TestBase.BaseTest.Extensions.Random} and can be assigned an integer value.
      */
     @Override
     public void beforeAll(ExtensionContext context) {
@@ -25,7 +25,7 @@ class RandomNumberExtension implements BeforeAllCallback {
 
 //    /**
 //     * Inject a random integer into non-static fields that are annotated with
-//     * {@code @BaseTest.Extensions.Random} and can be assigned an integer value.
+//     * {@code @PageTests.TestBase.BaseTest.Extensions.Random} and can be assigned an integer value.
 //     */
 //    @Override
 //    public void postProcessTestInstance(Object testInstance, ExtensionContext context) {
@@ -34,12 +34,12 @@ class RandomNumberExtension implements BeforeAllCallback {
 //    }
 //
 //    /**
-//     * Determine if the parameter is annotated with {@code @BaseTest.Extensions.Random} and can be
+//     * Determine if the parameter is annotated with {@code @PageTests.TestBase.BaseTest.Extensions.Random} and can be
 //     * assigned an integer value.
 //     */
 //    @Override
 //    public boolean supportsParameter(ParameterContext pc, ExtensionContext ec) {
-//        return pc.isAnnotated(BaseTest.Extensions.Random.class) && isInteger(pc.getParameter().getType());
+//        return pc.isAnnotated(PageTests.TestBase.BaseTest.Extensions.Random.class) && isInteger(pc.getParameter().getType());
 //    }
 //
 //    /**
