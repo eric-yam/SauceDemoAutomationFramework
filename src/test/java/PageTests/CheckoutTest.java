@@ -1,5 +1,6 @@
 package PageTests;
 
+import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.CheckoutPage.CheckoutFinishPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutOverviewPage;
@@ -10,6 +11,8 @@ import org.PageObjects.Pages.ProductPage.ProductPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,7 +45,9 @@ public class CheckoutTest extends BaseTest {
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
-        this.addProductsToCart(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        log.info("Product: " + productsAddedLog + " added to shopping cart");
+//        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
@@ -110,18 +115,18 @@ public class CheckoutTest extends BaseTest {
         log.info("Successfully validated Checkout Finish Page is displayed");
     }
 
-    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
-        HomePage homePage = new HomePage(driver);
-        homePage.waitForHomePage();
-        for (String s : productsToSelect) {
-            Product p = homePage.clickProduct(s);
-            ProductPage pp = new ProductPage(driver, p);
-            pp.waitForProductPage();
-
-            pp.clickAddToCartButton();
-            log.info("Product: [" + s + "] added to shopping cart");
-            pp.clickBackButton();
-            homePage.waitForHomePage();
-        }
-    }
+//    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
+//        HomePage homePage = new HomePage(driver);
+//        homePage.waitForHomePage();
+//        for (String s : productsToSelect) {
+//            Product p = homePage.clickProduct(s);
+//            ProductPage pp = new ProductPage(driver, p);
+//            pp.waitForProductPage();
+//
+//            pp.clickAddToCartButton();
+//            log.info("Product: [" + s + "] added to shopping cart");
+//            pp.clickBackButton();
+//            homePage.waitForHomePage();
+//        }
+//    }
 }

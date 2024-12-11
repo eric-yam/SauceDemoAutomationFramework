@@ -4,10 +4,10 @@ import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.PageObjects.Pages.HomePage.HomePage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -52,7 +52,7 @@ public class HomeSteps {
         assertTrue(productFound);
     }
 
-    @And("Add Products To Cart On Home Page")
+    @And("Add Products To Cart Via Shortcut On Home Page")
     public void addToCart(DataTable dataTable) {
         List<String> productsToSelect = dataTable.asList();
 
@@ -62,6 +62,21 @@ public class HomeSteps {
         for (String s : productsToSelect) {
             homePage.clickProductAddToCart(s);
         }
+    }
+
+    @And("Add Products To Shopping Cart Via Product Page")
+    public void addProducts() {
+        String[] productsToSelect = {
+                "Sauce Labs Backpack",
+                "Sauce Labs Bike Light",
+                "Sauce Labs Bolt T-Shirt",
+                "Sauce Labs Fleece Jacket",
+                "Sauce Labs Onesie"
+        }; //To be factored out
+
+        HomePage homePage = new HomePage(this.context.driver);
+        ArrayList<String> productsAddedList = homePage.addProductProductPage(this.context.driver, productsToSelect);
+        this.context.numPurchasedItems += productsAddedList.size();
     }
 
     @When("User Applies Filter On Home Page And Validates Filter Applied")
@@ -88,5 +103,11 @@ public class HomeSteps {
                 assertTrue(homePage.orderByPriceDescend());
             }
         }
+    }
+
+    @And("Open Shopping Cart Page")
+    public void openShoppingCartPage() {
+        HomePage homePage = new HomePage(this.context.driver);
+        homePage.clickShoppingCart();
     }
 }

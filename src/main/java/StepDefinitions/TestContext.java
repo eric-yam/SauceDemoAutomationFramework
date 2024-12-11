@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import io.qameta.allure.Allure;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -18,6 +19,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TestContext {
 
     protected WebDriver driver;
+    int numPurchasedItems;
 
     public void setup() {
         driver = new ChromeDriver();

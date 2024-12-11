@@ -1,13 +1,13 @@
 package PageTests;
 
+import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.HomePage.HomePage;
-import org.PageObjects.Pages.HomePage.Product;
 import org.PageObjects.Pages.LoginPage.LoginPage;
-import org.PageObjects.Pages.ProductPage.ProductPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,7 +43,9 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        this.addProductsToCart(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        log.info("Product: " + productsAddedLog + " added to shopping cart");
+//        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
 
         //verify they've been added
@@ -55,7 +57,9 @@ public class ShoppingCartTest extends BaseTest {
         log.info("Successfully validated actual number of items in cart: [" + scp.getNumberOfProductsInCart() +
                 "] match the expected number of items in cart:[" + productsToSelect.length + "]");
 
-        this.removeProductsShoppingCart(driver, productsToRemove);
+        ArrayList<String> productsRemoveLog = scp.removeProductsShoppingCart(driver, this.productsToRemove);
+        log.info("Product: " + productsRemoveLog + " removed from shopping cart");
+//        this.removeProductsShoppingCart(driver, productsToRemove);
 
         //verify they've been removed
         assertEquals(0, scp.getNumberOfProductsInCart());
@@ -79,7 +83,9 @@ public class ShoppingCartTest extends BaseTest {
 //                "Sauce Labs Bike Light"
 //        };
 
-        this.addProductsToCart(driver, productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        log.info("Product: " + productsAddedLog + " added to shopping cart");
+//        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
@@ -112,7 +118,9 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        this.addProductsToCart(driver, productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        log.info("Product: " + productsAddedLog + " added to shopping cart");
+//        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
@@ -125,25 +133,25 @@ public class ShoppingCartTest extends BaseTest {
     }
 
     //Helper Functions
-    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
-        HomePage homePage = new HomePage(driver);
-        for (String s : productsToSelect) {
-            Product p = homePage.clickProduct(s);
-            ProductPage pp = new ProductPage(driver, p);
+//    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
+//        HomePage homePage = new HomePage(driver);
+//        for (String s : productsToSelect) {
+//            Product p = homePage.clickProduct(s);
+//            ProductPage pp = new ProductPage(driver, p);
+//
+//            pp.clickAddToCartButton();
+//            log.info("Product: [" + s + "] added to shopping cart");
+//            pp.clickBackButton();
+//            homePage.waitForHomePage();
+//        }
+//    }
 
-            pp.clickAddToCartButton();
-            log.info("Product: [" + s + "] added to shopping cart");
-            pp.clickBackButton();
-            homePage.waitForHomePage();
-        }
-    }
-
-    public void removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
-        ShoppingCartPage scp = new ShoppingCartPage(driver);
-
-        for (String s : productsToRemove) {
-            scp.clickRemoveItem(s);
-            log.info("Product[" + s + "] removed from shopping cart");
-        }
-    }
+//    public void removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
+//        ShoppingCartPage scp = new ShoppingCartPage(driver);
+//
+//        for (String s : productsToRemove) {
+//            scp.clickRemoveItem(s);
+//            log.info("Product[" + s + "] removed from shopping cart");
+//        }
+//    }
 }

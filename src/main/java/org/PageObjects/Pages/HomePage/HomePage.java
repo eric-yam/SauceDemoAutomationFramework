@@ -2,6 +2,7 @@ package org.PageObjects.Pages.HomePage;
 
 import io.qameta.allure.Step;
 import org.PageObjects.Pages.AbstractPage.BasePage;
+import org.PageObjects.Pages.ProductPage.ProductPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -55,6 +56,24 @@ public class HomePage extends BasePage {
     public void clickProductAddToCart(String productName) {
         int index = this.indexOfProduct(productName);
         this.productCollector.clickAddProductToCart(index);
+    }
+
+    @Step("Add Product {1} on Product Page")
+    public ArrayList<String> addProductProductPage(WebDriver driver, String[] productsToSelect) {
+        ArrayList<String> resultLog = new ArrayList<>();
+
+        for (String s : productsToSelect) {
+            Product p = this.clickProduct(s);
+            ProductPage pp = new ProductPage(driver, p);
+
+            pp.clickAddToCartButton();
+            resultLog.add(s);
+//            resultLog.add("Product: [" + s + "] added to shopping cart");
+//            log.info("Product: [" + s + "] added to shopping cart");
+            pp.clickBackButton();
+            this.waitForHomePage();
+        }
+        return resultLog;
     }
 
     @Step("Click Product [{0}]")

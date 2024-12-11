@@ -24,7 +24,7 @@ Feature: Home Page Tests
     And Validates user successfully logged in
     And Home Page is Displayed
 
-    Then Add Products To Cart On Home Page
+    Then Add Products To Cart Via Shortcut On Home Page
       | Sauce Labs Backpack      |
       | Sauce Labs Bike Light    |
       | Sauce Labs Bolt T-Shirt  |

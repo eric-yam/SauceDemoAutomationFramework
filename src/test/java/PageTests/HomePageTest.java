@@ -1,5 +1,6 @@
 package PageTests;
 
+import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;

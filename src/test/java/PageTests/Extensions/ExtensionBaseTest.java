@@ -1,6 +1,6 @@
 package PageTests.Extensions;
 
-import PageTests.BaseTest;
+import PageTests.TestBase.BaseTest;
 import io.qameta.allure.Allure;
 import org.junit.jupiter.api.extension.AfterTestExecutionCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;

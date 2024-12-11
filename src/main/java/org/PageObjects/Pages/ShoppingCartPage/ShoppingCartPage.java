@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCartPage extends BasePage {
@@ -54,6 +55,18 @@ public class ShoppingCartPage extends BasePage {
 
         cartListElements.get(index).findElement(By.className(REMOVE_BUTTON)).click();
 //        this.cartList.get(index).findElement(By.xpath(this.removeButton)).click();
+    }
+
+    @Step("Remove Product {1} on Shopping Cart Page")
+    public ArrayList<String> removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
+        ArrayList<String> resultLog = new ArrayList<>();
+
+        for (String s : productsToRemove) {
+            this.clickRemoveItem(s);
+//            log.info("Product[" + s + "] removed from shopping cart");
+            resultLog.add(s);
+        }
+        return resultLog;
     }
 
     @Step("Get Number Of Products In Shopping Cart")
