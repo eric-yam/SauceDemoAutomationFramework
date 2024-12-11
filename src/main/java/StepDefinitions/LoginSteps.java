@@ -47,7 +47,6 @@ public class LoginSteps {
             loginPage.inputPassword(e.getValue());
             loginPage.clickLoginButton();
         }
-//        loginPage.clickLoginButton();
     }
 
     @Then("Validates user successfully logged in")
