@@ -3,6 +3,7 @@ package StepDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.PageObjects.Pages.HomePage.HomePage;
@@ -34,8 +35,8 @@ public class HomeSteps {
     }
 
     @After("@Home")
-    public void tearDown() {
-        this.context.cleanUp();
+    public void tearDown(Scenario scenario) {
+        this.context.cleanUp(scenario);
     }
 
     @And("Home Page is Displayed")

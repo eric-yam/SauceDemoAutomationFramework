@@ -3,6 +3,7 @@ package StepDefinitions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.PageObjects.Pages.HomePage.HomePage;
@@ -31,8 +32,8 @@ public class LoginSteps {
     }
 
     @After("@Login")
-    public void tearDown() {
-        this.context.cleanUp();
+    public void tearDown(Scenario scenario) {
+        this.context.cleanUp(scenario);
     }
 
     @Given("User Logs In:")

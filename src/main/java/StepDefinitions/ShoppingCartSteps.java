@@ -2,6 +2,7 @@ package StepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
@@ -44,9 +45,11 @@ public class ShoppingCartSteps {
         this.context.setup();
     }
 
+    //Note that Scenario Before and After hooks can declare the Scenario parameter,
+    // and will receive an instance of the current scenario running
     @After("@ShoppingCart")
-    public void tearDown() {
-        this.context.cleanUp();
+    public void tearDown(Scenario scenario) {
+        this.context.cleanUp(scenario);
     }
 
     @And("Shopping Cart Page Is Displayed")
