@@ -26,15 +26,15 @@ public class LoginSteps {
      * Adding tags to Before and After annotations specifies that these methods will only
      * execute on feature files tagged with the specified name in the annotation
      */
-    @Before("@Login")
-    public void setup() {
-        this.context.setup();
-    }
-
-    @After("@Login")
-    public void tearDown(Scenario scenario) {
-        this.context.cleanUp(scenario);
-    }
+//    @Before("@Login")
+//    public void setup() {
+//        this.context.setup();
+//    }
+//
+//    @After("@Login")
+//    public void tearDown(Scenario scenario) {
+//        this.context.cleanUp(scenario);
+//    }
 
     @Given("User Logs In:")
     public void userEntersLoginCredentials(DataTable dataTable) {

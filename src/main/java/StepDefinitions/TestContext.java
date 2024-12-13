@@ -16,7 +16,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
  *
  * Note that this is referred to as a Dependency class, meaning before a StepDefinition class is ran,
  * PicoContainer will create an instance of TestContext and pass the SAME instance/instances to its
- * StepDefinition's constructor
+ * StepDefinition's constructors
  * */
 public class TestContext {
 
@@ -31,6 +31,10 @@ public class TestContext {
         driver.get("https://www.saucedemo.com/v1/");
     }
 
+    /**
+     * Note that Scenario Before and After hooks can declare the Scenario parameter,
+     * and will receive an instance of the current scenario running
+     */
     public void cleanUp(Scenario scenario) {
         this.takeScreenshotOnFailure(scenario);
         driver.quit();

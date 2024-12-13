@@ -31,7 +31,7 @@ public class ShoppingCartSteps {
     double expectedSubTotal = 113.95;
 
     TestContext context;
-
+//TODO: Remove test data and move them into input datatables in feature files
     public ShoppingCartSteps(TestContext context) {
         this.context = context;
     }
@@ -40,17 +40,17 @@ public class ShoppingCartSteps {
      * Adding tags to Before and After annotations specifies that these methods will only
      * execute on feature files tagged with the specified name in the annotation
      */
-    @Before("@ShoppingCart")
-    public void setup() {
-        this.context.setup();
-    }
-
-    //Note that Scenario Before and After hooks can declare the Scenario parameter,
-    // and will receive an instance of the current scenario running
-    @After("@ShoppingCart")
-    public void tearDown(Scenario scenario) {
-        this.context.cleanUp(scenario);
-    }
+//    @Before("@ShoppingCart")
+//    public void setup() {
+//        this.context.setup();
+//    }
+//
+//    //Note that Scenario Before and After hooks can declare the Scenario parameter,
+//    // and will receive an instance of the current scenario running
+//    @After("@ShoppingCart")
+//    public void tearDown(Scenario scenario) {
+//        this.context.cleanUp(scenario);
+//    }
 
     @And("Shopping Cart Page Is Displayed")
     public void shoppingCarPageDisplayed() {
