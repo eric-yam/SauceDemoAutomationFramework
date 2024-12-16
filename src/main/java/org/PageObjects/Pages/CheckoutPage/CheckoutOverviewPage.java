@@ -36,6 +36,7 @@ public class CheckoutOverviewPage extends BasePage {
 
     public void waitForCheckoutOverviewPage() {
         this.waitForVisibilityOfElement(this.pageTitle);
+        this.waitForTextToChange(this.pageTitle, "Checkout: Overview");
     }
 
     public void clickFinishButton() {

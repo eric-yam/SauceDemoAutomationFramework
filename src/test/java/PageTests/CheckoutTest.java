@@ -13,7 +13,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,7 +25,6 @@ public class CheckoutTest extends BaseTest {
             "Sauce Labs Fleece Jacket",
             "Sauce Labs Onesie"
     };
-//    List<String> productsToSelect = ;
 
     String username = "standard_user";
     String password = "secret_sauce";

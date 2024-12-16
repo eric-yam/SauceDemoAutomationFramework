@@ -30,6 +30,7 @@ public class CheckoutInformationPage extends BasePage {
 
     public void waitForCheckoutInformationPage() {
         this.waitForVisibilityOfElement(this.pageTitle);
+        this.waitForTextToChange(this.pageTitle, "Checkout: Your Information");
     }
 
     public void clickCancelButton() {

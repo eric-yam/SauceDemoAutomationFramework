@@ -1,9 +1,6 @@
 package StepDefinitions;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 import org.PageObjects.Pages.HomePage.HomePage;
@@ -63,6 +60,7 @@ public class HomeSteps {
         for (String s : productsToSelect) {
             homePage.clickProductAddToCart(s);
         }
+        this.context.numPurchasedItems += productsToSelect.size();
     }
 
     @And("Add Products To Shopping Cart Via Product Page")

@@ -1,11 +1,7 @@
 package StepDefinitions;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.And;
-import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 
 import java.util.ArrayList;
@@ -60,10 +56,10 @@ public class ShoppingCartSteps {
         scp.waitForShoppingCartPage();
     }
 
-    @And("Validate Number of Items In Cart")
+    @And("Validate Number of Items In Cart On Shopping Cart Page")
     public void validateNumItemsInCart() {
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
-        assertEquals(this.context.numPurchasedItems, scp.getNumberOfProductsInCart());
+        assertEquals(scp.getNumberOfProductsInCart(), this.context.numPurchasedItems);
     }
 
     @And("Remove Products In Shopping Cart")
@@ -87,9 +83,10 @@ public class ShoppingCartSteps {
     @And("User Begins Checkout")
     public void beginCheckout() {
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
+        scp.clickCheckoutButton();
     }
 
-    @And("Validate Total Cost Of Items Purchased")
+    @And("Validate Sub-Total Cost Of Items Purchased On Shopping Cart Page")
     public void validateTotalItemsPurchased() {
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
         scp.waitForShoppingCartPage();

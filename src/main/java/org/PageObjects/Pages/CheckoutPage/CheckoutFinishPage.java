@@ -28,6 +28,7 @@ public class CheckoutFinishPage extends BasePage {
 
     public void waitCheckoutFinishPage() {
         this.waitForVisibilityOfElement(this.pageTitle);
+        this.waitForTextToChange(this.pageTitle, "Finish");
     }
 
     public boolean verifyFinishPageDisplayed() {

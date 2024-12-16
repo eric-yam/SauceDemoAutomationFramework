@@ -1,15 +1,12 @@
 package StepDefinitions;
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 
-import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -38,16 +35,27 @@ public class LoginSteps {
 
     @Given("User Logs In:")
     public void userEntersLoginCredentials(DataTable dataTable) {
-        Map<String, String> dt = dataTable.asMap();
-        Map<String, String> map = new Hashtable<>(dt);
+        //TODO: Fix this using the same method in checkoutsteps
+        List<Map<String, String>> table = dataTable.asMaps(String.class, String.class);
 
         LoginPage loginPage = new LoginPage(this.context.driver);
+        for (Map<String, String> row : table) {
+            loginPage.inputUserName(row.get("Username"));
+            loginPage.inputPassword(row.get("Password"));
 
-        for (Map.Entry<String, String> e : map.entrySet()) {
-            loginPage.inputUserName(e.getKey());
-            loginPage.inputPassword(e.getValue());
             loginPage.clickLoginButton();
         }
+
+//        Map<String, String> dt = dataTable.asMap();
+//        Map<String, String> map = new Hashtable<>(dt);
+//
+//        LoginPage loginPage = new LoginPage(this.context.driver);
+//
+//        for (Map.Entry<String, String> e : map.entrySet()) {
+//            loginPage.inputUserName(e.getKey());
+//            loginPage.inputPassword(e.getValue());
+//            loginPage.clickLoginButton();
+//        }
     }
 
     @Then("Validates user successfully logged in")

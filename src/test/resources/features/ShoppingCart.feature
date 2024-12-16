@@ -3,6 +3,7 @@ Feature: Shopping Cart Page Tests
 
   Scenario: Successfully Add And Remove Products In Shopping Cart
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     And Home Page is Displayed
@@ -16,17 +17,18 @@ Feature: Shopping Cart Page Tests
     And Open Shopping Cart Page
     Then Shopping Cart Page Is Displayed
 
-    And Validate Number of Items In Cart
+    And Validate Number of Items In Cart On Shopping Cart Page
     And Remove Products In Shopping Cart
       | Sauce Labs Backpack      |
       | Sauce Labs Bike Light    |
       | Sauce Labs Bolt T-Shirt  |
       | Sauce Labs Fleece Jacket |
       | Sauce Labs Onesie        |
-    Then Validate Number of Items In Cart
+    Then Validate Number of Items In Cart On Shopping Cart Page
 
   Scenario: Verify Functionality of Shopping Cart Page
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     Then Home Page is Displayed
@@ -41,6 +43,7 @@ Feature: Shopping Cart Page Tests
 
   Scenario: Validate Total Cost of Items Being Purchased
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     And Home Page is Displayed
@@ -53,4 +56,4 @@ Feature: Shopping Cart Page Tests
       | Sauce Labs Onesie        |
     And Open Shopping Cart Page
     And Shopping Cart Page Is Displayed
-    Then Validate Total Cost Of Items Purchased
+    Then Validate Sub-Total Cost Of Items Purchased On Shopping Cart Page

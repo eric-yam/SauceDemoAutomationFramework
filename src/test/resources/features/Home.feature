@@ -3,12 +3,14 @@ Feature: Home Page Tests
 
   Scenario: Successfully Landed On Home Page
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     And Home Page is Displayed
 
   Scenario: Validate Home Page Filter
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     And Home Page is Displayed
@@ -20,6 +22,7 @@ Feature: Home Page Tests
 
   Scenario: Add Products To Cart From Home Page
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     And Home Page is Displayed
