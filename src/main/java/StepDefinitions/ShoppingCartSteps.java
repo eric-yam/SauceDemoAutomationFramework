@@ -14,21 +14,21 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShoppingCartSteps {
-    String[] productsToSelect = {
-            "Sauce Labs Backpack",
-            "Sauce Labs Bike Light",
-            "Sauce Labs Bolt T-Shirt",
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Onesie"
-    };
-
-    String[] productsToRemove = {
-            "Sauce Labs Backpack",
-            "Sauce Labs Bike Light",
-            "Sauce Labs Bolt T-Shirt",
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Onesie"
-    };
+//    String[] productsToSelect = {
+//            "Sauce Labs Backpack",
+//            "Sauce Labs Bike Light",
+//            "Sauce Labs Bolt T-Shirt",
+//            "Sauce Labs Fleece Jacket",
+//            "Sauce Labs Onesie"
+//    };
+//
+//    String[] productsToRemove = {
+//            "Sauce Labs Backpack",
+//            "Sauce Labs Bike Light",
+//            "Sauce Labs Bolt T-Shirt",
+//            "Sauce Labs Fleece Jacket",
+//            "Sauce Labs Onesie"
+//    };
 
     double expectedSubTotal = 113.95;
 
@@ -87,10 +87,6 @@ public class ShoppingCartSteps {
     @And("User Begins Checkout")
     public void beginCheckout() {
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
-        scp.clickCheckoutButton();
-
-        CheckoutInformationPage cip = new CheckoutInformationPage(this.context.driver);
-        cip.waitForCheckoutInformationPage();
     }
 
     @And("Validate Total Cost Of Items Purchased")

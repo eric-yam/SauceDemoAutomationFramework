@@ -133,7 +133,7 @@ public class ShoppingCartTest extends BaseTest {
 
         assertEquals(expectedSubTotal, scp.calculateSubTotal());
         log.info("Successfully validated actual calculated subtotal: [" + scp.calculateSubTotal() +
-                "] match the expected calculated subtotal:[" + expectedSubTotal + "]");
+                "] match the expected calculated subtotal: [" + expectedSubTotal + "]");
     }
 
     //Helper Functions
