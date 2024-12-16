@@ -16,6 +16,10 @@ public class HookSteps {
         this.context.setup();
     }
 
+    /**
+     * Note that Scenario Before and After hooks can declare the Scenario parameter,
+     * and will receive an instance of the current scenario running
+     */
     @After
     public void tearDown(Scenario scenario) {
         this.context.cleanUp(scenario);

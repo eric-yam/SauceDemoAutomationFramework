@@ -58,7 +58,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     @Step("Remove Product {1} on Shopping Cart Page")
-    public ArrayList<String> removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
+    public ArrayList<String> removeProductsShoppingCart(WebDriver driver, List<String> productsToRemove) {
         ArrayList<String> resultLog = new ArrayList<>();
 
         for (String s : productsToRemove) {

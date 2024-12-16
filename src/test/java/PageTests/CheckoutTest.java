@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,6 +26,7 @@ public class CheckoutTest extends BaseTest {
             "Sauce Labs Fleece Jacket",
             "Sauce Labs Onesie"
     };
+//    List<String> productsToSelect = ;
 
     String username = "standard_user";
     String password = "secret_sauce";
@@ -45,7 +48,7 @@ public class CheckoutTest extends BaseTest {
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
-        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
 //        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();

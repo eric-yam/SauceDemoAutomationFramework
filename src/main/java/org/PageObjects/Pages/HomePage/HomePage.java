@@ -59,7 +59,7 @@ public class HomePage extends BasePage {
     }
 
     @Step("Add Product {1} on Product Page")
-    public ArrayList<String> addProductProductPage(WebDriver driver, String[] productsToSelect) {
+    public ArrayList<String> addProductProductPage(WebDriver driver, List<String> productsToSelect) {
         ArrayList<String> resultLog = new ArrayList<>();
 
         for (String s : productsToSelect) {

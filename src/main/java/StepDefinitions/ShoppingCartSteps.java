@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -8,6 +9,7 @@ import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -65,7 +67,9 @@ public class ShoppingCartSteps {
     }
 
     @And("Remove Products In Shopping Cart")
-    public void removeProducts() {
+    public void removeProducts(DataTable dataTable) {
+        List<String> productsToRemove = dataTable.asList();
+
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
 //        this.removeProductsShoppingCart(this.context.driver, productsToRemove);
         ArrayList<String> removedProductsList = scp.removeProductsShoppingCart(this.context.driver, productsToRemove);

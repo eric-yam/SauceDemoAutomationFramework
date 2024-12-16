@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -46,7 +47,7 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
 //        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
@@ -58,16 +59,16 @@ public class ShoppingCartTest extends BaseTest {
 
         assertEquals(productsToSelect.length, scp.getNumberOfProductsInCart());
         log.info("Successfully validated actual number of items in cart: [" + scp.getNumberOfProductsInCart() +
-                "] match the expected number of items in cart:[" + productsToSelect.length + "]");
+                "] match the expected number of items in cart: [" + productsToSelect.length + "]");
 
-        ArrayList<String> productsRemoveLog = scp.removeProductsShoppingCart(driver, this.productsToRemove);
+        ArrayList<String> productsRemoveLog = scp.removeProductsShoppingCart(driver, Arrays.asList(this.productsToRemove));
         log.info("Product: " + productsRemoveLog + " removed from shopping cart");
 //        this.removeProductsShoppingCart(driver, productsToRemove);
 
         //verify they've been removed
         assertEquals(0, scp.getNumberOfProductsInCart());
         log.info("Successfully validated actual number of items in cart: [" + scp.getNumberOfProductsInCart() +
-                "] match the expected number of items in cart:[" + 0 + "]");
+                "] match the expected number of items in cart: [" + 0 + "]");
     }
 
     //Test functionality of buttons on shopping cart page
@@ -86,7 +87,7 @@ public class ShoppingCartTest extends BaseTest {
 //                "Sauce Labs Bike Light"
 //        };
 
-        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
 //        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
@@ -121,7 +122,7 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, this.productsToSelect);
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
 //        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();

@@ -66,14 +66,16 @@ public class HomeSteps {
     }
 
     @And("Add Products To Shopping Cart Via Product Page")
-    public void addProducts() {
-        String[] productsToSelect = {
-                "Sauce Labs Backpack",
-                "Sauce Labs Bike Light",
-                "Sauce Labs Bolt T-Shirt",
-                "Sauce Labs Fleece Jacket",
-                "Sauce Labs Onesie"
-        }; //TODO: To be factored out
+    public void addProducts(DataTable dataTable) {
+//        String[] productsToSelect = {
+//                "Sauce Labs Backpack",
+//                "Sauce Labs Bike Light",
+//                "Sauce Labs Bolt T-Shirt",
+//                "Sauce Labs Fleece Jacket",
+//                "Sauce Labs Onesie"
+//        }; //TODO: To be factored out
+
+        List<String> productsToSelect = dataTable.asList();
 
         HomePage homePage = new HomePage(this.context.driver);
         ArrayList<String> productsAddedList = homePage.addProductProductPage(this.context.driver, productsToSelect);
