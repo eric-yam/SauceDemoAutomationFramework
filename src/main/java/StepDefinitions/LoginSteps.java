@@ -19,20 +19,6 @@ public class LoginSteps {
         this.context = context;
     }
 
-    /*
-     * Adding tags to Before and After annotations specifies that these methods will only
-     * execute on feature files tagged with the specified name in the annotation
-     */
-//    @Before("@Login")
-//    public void setup() {
-//        this.context.setup();
-//    }
-//
-//    @After("@Login")
-//    public void tearDown(Scenario scenario) {
-//        this.context.cleanUp(scenario);
-//    }
-
     @Given("User Logs In:")
     public void userEntersLoginCredentials(DataTable dataTable) {
         //TODO: Fix this using the same method in checkoutsteps
@@ -45,17 +31,6 @@ public class LoginSteps {
 
             loginPage.clickLoginButton();
         }
-
-//        Map<String, String> dt = dataTable.asMap();
-//        Map<String, String> map = new Hashtable<>(dt);
-//
-//        LoginPage loginPage = new LoginPage(this.context.driver);
-//
-//        for (Map.Entry<String, String> e : map.entrySet()) {
-//            loginPage.inputUserName(e.getKey());
-//            loginPage.inputPassword(e.getValue());
-//            loginPage.clickLoginButton();
-//        }
     }
 
     @Then("Validates user successfully logged in")

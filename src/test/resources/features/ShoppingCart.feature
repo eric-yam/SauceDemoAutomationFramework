@@ -56,4 +56,4 @@ Feature: Shopping Cart Page Tests
       | Sauce Labs Onesie        |
     And Open Shopping Cart Page
     And Shopping Cart Page Is Displayed
-    Then Validate Sub-Total Cost Of Items Purchased On Shopping Cart Page
+    Then Validate Sub-Total Cost Of Items Purchased Is Expected 113.95 On Shopping Cart Page

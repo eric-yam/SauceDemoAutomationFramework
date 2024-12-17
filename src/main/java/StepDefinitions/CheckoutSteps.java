@@ -31,7 +31,7 @@ public class CheckoutSteps {
         cip.clickContinueButton();
     }
 
-    @And ("Cancel Checkout Information")
+    @And("Cancel Checkout Information")
     public void cancelCheckoutInfo() {
         CheckoutInformationPage cip = new CheckoutInformationPage(this.context.driver);
         cip.clickCancelButton();

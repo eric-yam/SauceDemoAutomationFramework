@@ -26,8 +26,6 @@ public class ShoppingCartPage extends BasePage {
 
     private final CartList cartList;
 
-    //    private final String removeButton = ".//button[@class='btn_secondary cart_button']";
-
     public ShoppingCartPage(WebDriver driver) {
         super(driver);
         this.cartList = new CartList(driver, QUANTITY);

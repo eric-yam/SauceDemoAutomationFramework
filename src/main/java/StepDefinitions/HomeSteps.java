@@ -26,16 +26,6 @@ public class HomeSteps {
         this.context = context;
     }
 
-//    @Before("@Home")
-//    public void setup() {
-//        this.context.setup();
-//    }
-//
-//    @After("@Home")
-//    public void tearDown(Scenario scenario) {
-//        this.context.cleanUp(scenario);
-//    }
-
     @And("Home Page is Displayed")
     public void landedHomePage() {
         HomePage homePage = new HomePage(this.context.driver);

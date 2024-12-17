@@ -10,45 +10,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ShoppingCartSteps {
-//    String[] productsToSelect = {
-//            "Sauce Labs Backpack",
-//            "Sauce Labs Bike Light",
-//            "Sauce Labs Bolt T-Shirt",
-//            "Sauce Labs Fleece Jacket",
-//            "Sauce Labs Onesie"
-//    };
-//
-//    String[] productsToRemove = {
-//            "Sauce Labs Backpack",
-//            "Sauce Labs Bike Light",
-//            "Sauce Labs Bolt T-Shirt",
-//            "Sauce Labs Fleece Jacket",
-//            "Sauce Labs Onesie"
-//    };
-
-    double expectedSubTotal = 113.95;
 
     TestContext context;
-//TODO: Remove test data and move them into input datatables in feature files
+
     public ShoppingCartSteps(TestContext context) {
         this.context = context;
     }
-
-    /*
-     * Adding tags to Before and After annotations specifies that these methods will only
-     * execute on feature files tagged with the specified name in the annotation
-     */
-//    @Before("@ShoppingCart")
-//    public void setup() {
-//        this.context.setup();
-//    }
-//
-//    //Note that Scenario Before and After hooks can declare the Scenario parameter,
-//    // and will receive an instance of the current scenario running
-//    @After("@ShoppingCart")
-//    public void tearDown(Scenario scenario) {
-//        this.context.cleanUp(scenario);
-//    }
 
     @And("Shopping Cart Page Is Displayed")
     public void shoppingCarPageDisplayed() {
@@ -86,8 +53,8 @@ public class ShoppingCartSteps {
         scp.clickCheckoutButton();
     }
 
-    @And("Validate Sub-Total Cost Of Items Purchased On Shopping Cart Page")
-    public void validateTotalItemsPurchased() {
+    @And("Validate Sub-Total Cost Of Items Purchased Is Expected {double} On Shopping Cart Page")
+    public void validateTotalItemsPurchased(double expectedSubTotal) {
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
         scp.waitForShoppingCartPage();
 

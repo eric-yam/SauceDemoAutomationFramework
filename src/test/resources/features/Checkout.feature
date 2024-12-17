@@ -3,6 +3,7 @@ Feature: Checkout Tests
 
   Scenario: Checkout Products From Shopping Cart
     Given User Logs In:
+      | Username      | Password     |
       | standard_user | secret_sauce |
     And Validates user successfully logged in
     Then Home Page is Displayed
@@ -16,7 +17,7 @@ Feature: Checkout Tests
     And Open Shopping Cart Page
     And Shopping Cart Page Is Displayed
     And Validate Number of Items In Cart On Shopping Cart Page
-    Then Validate Sub-Total Cost Of Items Purchased On Shopping Cart Page
+    Then Validate Sub-Total Cost Of Items Purchased Is Expected 113.95 On Shopping Cart Page
 
     When User Begins Checkout
     And Checkout Information Page Is Displayed
