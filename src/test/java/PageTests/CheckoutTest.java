@@ -115,19 +115,4 @@ public class CheckoutTest extends BaseTest {
         assertTrue(cfp.verifyFinishPageDisplayed());
         log.info("Successfully validated Checkout Finish Page is displayed");
     }
-
-//    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
-//        HomePage homePage = new HomePage(driver);
-//        homePage.waitForHomePage();
-//        for (String s : productsToSelect) {
-//            Product p = homePage.clickProduct(s);
-//            ProductPage pp = new ProductPage(driver, p);
-//            pp.waitForProductPage();
-//
-//            pp.clickAddToCartButton();
-//            log.info("Product: [" + s + "] added to shopping cart");
-//            pp.clickBackButton();
-//            homePage.waitForHomePage();
-//        }
-//    }
 }

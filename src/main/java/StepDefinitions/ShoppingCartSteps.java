@@ -34,7 +34,6 @@ public class ShoppingCartSteps {
         List<String> productsToRemove = dataTable.asList();
 
         ShoppingCartPage scp = new ShoppingCartPage(this.context.driver);
-//        this.removeProductsShoppingCart(this.context.driver, productsToRemove);
         ArrayList<String> removedProductsList = scp.removeProductsShoppingCart(this.context.driver, productsToRemove);
         this.context.numPurchasedItems -= removedProductsList.size();
 

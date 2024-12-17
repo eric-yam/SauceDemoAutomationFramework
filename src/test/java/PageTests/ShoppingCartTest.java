@@ -49,7 +49,6 @@ public class ShoppingCartTest extends BaseTest {
 
         ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
-//        this.addProductsToCart(driver, this.productsToSelect);
         homePage.clickShoppingCart();
 
         //verify they've been added
@@ -63,7 +62,6 @@ public class ShoppingCartTest extends BaseTest {
 
         ArrayList<String> productsRemoveLog = scp.removeProductsShoppingCart(driver, Arrays.asList(this.productsToRemove));
         log.info("Product: " + productsRemoveLog + " removed from shopping cart");
-//        this.removeProductsShoppingCart(driver, productsToRemove);
 
         //verify they've been removed
         assertEquals(0, scp.getNumberOfProductsInCart());
@@ -82,14 +80,8 @@ public class ShoppingCartTest extends BaseTest {
         homePage.waitForHomePage();
         log.info("Landed on Home Page");
 
-//        String[] productsToSelect = {
-//                "Sauce Labs Backpack",
-//                "Sauce Labs Bike Light"
-//        };
-
         ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
-//        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
@@ -124,7 +116,6 @@ public class ShoppingCartTest extends BaseTest {
 
         ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
         log.info("Product: " + productsAddedLog + " added to shopping cart");
-//        this.addProductsToCart(driver, productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
@@ -135,27 +126,4 @@ public class ShoppingCartTest extends BaseTest {
         log.info("Successfully validated actual calculated subtotal: [" + scp.calculateSubTotal() +
                 "] match the expected calculated subtotal: [" + expectedSubTotal + "]");
     }
-
-    //Helper Functions
-//    public void addProductsToCart(WebDriver driver, String[] productsToSelect) {
-//        HomePage homePage = new HomePage(driver);
-//        for (String s : productsToSelect) {
-//            Product p = homePage.clickProduct(s);
-//            ProductPage pp = new ProductPage(driver, p);
-//
-//            pp.clickAddToCartButton();
-//            log.info("Product: [" + s + "] added to shopping cart");
-//            pp.clickBackButton();
-//            homePage.waitForHomePage();
-//        }
-//    }
-
-//    public void removeProductsShoppingCart(WebDriver driver, String[] productsToRemove) {
-//        ShoppingCartPage scp = new ShoppingCartPage(driver);
-//
-//        for (String s : productsToRemove) {
-//            scp.clickRemoveItem(s);
-//            log.info("Product[" + s + "] removed from shopping cart");
-//        }
-//    }
 }
