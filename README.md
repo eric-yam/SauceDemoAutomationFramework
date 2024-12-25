@@ -1,1 +1,1 @@
-# GeneralAutomationFramework
+# SauceDemoAutomationFramework
