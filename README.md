@@ -1,6 +1,6 @@
 # SauceDemoAutomationFramework
 
-##Project Setup
+## Project Setup
 1. Download the latest version of Java as the programming language
 2. Download the latest version of Apache Maven binary zip file
    https://maven.apache.org/download.cgi
