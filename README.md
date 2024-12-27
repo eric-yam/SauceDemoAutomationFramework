@@ -23,11 +23,13 @@ For the test scripts, Allure reports back the Selenium actions that passed or fa
 Navigate to the target directory within the project and use the allure serve command to view the Allure report.
 
 ## Logging
-Console logging is configured using log4j.
-Logging is handled in a separate Logger wrapper class. 
+Logging is handled in a separate Logger wrapper class for the Logger class from log4j. Upon test execution, an instance of Logger wrapper class is instantiated and a log message is appended to the consoleLog field on each test step. At the end of a test's lifecycle, the consoleLog String field is added as an attachment to the Allure report.
 
 ## Test Execution
+Executing all test scripts: mvn clean test
+Execute specific test script: mvn clean -Dtest="<Test Class Name>" test
 
-## Allure Report
+Execute feature file: mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/<Feature File Name>.feature
+Execute specific scenario from feature file : mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/<Feature File Name>.feature:<Line Number of Scenario>
 
 
