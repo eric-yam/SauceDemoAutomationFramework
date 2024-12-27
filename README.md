@@ -27,9 +27,11 @@ Logging is handled in a separate Logger wrapper class for the Logger class from 
 
 ## Test Execution
 Executing all test scripts: mvn clean test
+
 Execute specific test script: mvn clean -Dtest=[Test Class Name] test
 
 Execute feature file: mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature
+
 Execute specific scenario from feature file : mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature:[Line Number of Scenario]
 
 
