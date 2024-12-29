@@ -22,7 +22,7 @@ For the test scripts, Allure tracks and reports back the Selenium actions that s
 To view the Allure report, navigate to the ```target``` directory within the project and use the ```allure serve``` command to view the Allure report.
 
 ## Logging
-Logging is managed by a separate wrapper class called ```LoggerWrapper``` that wraps the ```Logger``` class from ```log4j```. At the start of a test's lifecycle, an instance of ```LoggerWrapper``` is instantiated and a log message is appenede to the ```consoleLog``` field for each test step. Once the test completes, the contents of the ```consoleLog``` string are added as an attachment to the Allure report.
+Logging is managed by a separate wrapper class called ```LoggerWrapper``` that wraps the ```Logger``` class from ```log4j```. At the start of a test's lifecycle, an instance of ```LoggerWrapper``` is instantiated and a log message is appeneded to the ```consoleLog``` field for each test step. Once the test completes, the contents of the ```consoleLog``` string are added as an attachment to the Allure report.
 
 ## Test Execution
 Executing all test scripts: ```mvn clean test```
