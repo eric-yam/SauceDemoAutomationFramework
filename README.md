@@ -15,22 +15,22 @@ This automation framework tests the functionality of the SauceDemo web applicati
    https://www.jenkins.io/download/
 
 ## Allure
-Allure is configured for JUnit 5 for test reporting. The Allure results directory is configured as: target/allure-results. Additionally, Allure reporting is also integrated with Jenkins such that the results directory located relative to the workspace at: target/allure-results
+Allure is configured for JUnit 5 for test reporting. The Allure results directory is configured as: ```target/allure-results```. Additionally, Allure reporting is also integrated with Jenkins such that the results directory located relative to the workspace at: ```target/allure-results```
 
 For the test scripts, Allure tracks and reports back the Selenium actions that succeed or fail, including an attachment with the logged actions performed during the test. For the feature files, Allure tracks and reports the step definitions that succeed or failed. In the event a test step fails, a screenshot is taken and added as an attachment in the Allure report.
 
-To view the Allure report, navigate to the target directory within the project and use the allure serve command to view the Allure report.
+To view the Allure report, navigate to the ```target``` directory within the project and use the ```allure serve``` command to view the Allure report.
 
 ## Logging
-Logging is handled in a separate Logger wrapper class for the Logger class from log4j. Upon test execution, an instance of Logger wrapper class is instantiated and a log message is appended to the consoleLog field on each test step. At the end of a test's lifecycle, the consoleLog String field is added as an attachment to the Allure report.
+Logging is managed by a separate wrapper class called ```LoggerWrapper``` that wraps the ```Logger``` class from ```log4j```. At the start of a test's lifecycle, an instance of ```LoggerWrapper``` is instantiated and a log message is appenede to the ```consoleLog``` field for each test step. Once the test completes, the contents of the ```consoleLog``` string are added as an attachment to the Allure report.
 
 ## Test Execution
-Executing all test scripts: mvn clean test
+Executing all test scripts: ```mvn clean test```
 
-Execute specific test script: mvn clean -Dtest=[Test Class Name] test
+Execute specific test script: ```mvn clean -Dtest=[Test Class Name] test```
 
-Execute feature file: mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature
+Execute feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature```
 
-Execute specific scenario from feature file : mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature:[Line Number of Scenario]
+Execute specific scenario from feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature:[Line Number of Scenario]```
 
 
