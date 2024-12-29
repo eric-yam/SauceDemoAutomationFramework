@@ -15,12 +15,11 @@ This automation framework tests the functionality of the SauceDemo web applicati
    https://www.jenkins.io/download/
 
 ## Allure
-Allure is configured for JUnit 5 for test reporting. The Allure results directory is configured here: target/allure-results
-Allure reporting is also configured within Jenkins. The Allure results directory relative to workspace is here: target/allure-results
+Allure is configured for JUnit 5 for test reporting. The Allure results directory is configured as: target/allure-results. Additionally, Allure reporting is also integrated with Jenkins such that the results directory located relative to the workspace at: target/allure-results
 
-For the test scripts, Allure reports back the Selenium actions that passed or failed, along with an attachment containing the logged actions taken in the test script. For the feature files, Allure reports back the step definitions that passed or failed. In the event a test step fails, a screenshot is taken and added as an attachment in the Allure report.
+For the test scripts, Allure tracks and reports back the Selenium actions that succeed or fail, including an attachment with the logged actions performed during the test. For the feature files, Allure tracks and reports the step definitions that succeed or failed. In the event a test step fails, a screenshot is taken and added as an attachment in the Allure report.
 
-Navigate to the target directory within the project and use the allure serve command to view the Allure report.
+To view the Allure report, navigate to the target directory within the project and use the allure serve command to view the Allure report.
 
 ## Logging
 Logging is handled in a separate Logger wrapper class for the Logger class from log4j. Upon test execution, an instance of Logger wrapper class is instantiated and a log message is appended to the consoleLog field on each test step. At the end of a test's lifecycle, the consoleLog String field is added as an attachment to the Allure report.
