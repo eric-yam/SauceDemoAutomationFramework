@@ -1,7 +1,6 @@
 package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
-import PageTests.Extensions.Random;
 import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
