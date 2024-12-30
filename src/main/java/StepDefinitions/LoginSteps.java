@@ -21,7 +21,6 @@ public class LoginSteps {
 
     @Given("User Logs In:")
     public void userEntersLoginCredentials(DataTable dataTable) {
-        //TODO: Fix this using the same method in checkoutsteps
         List<Map<String, String>> table = dataTable.asMaps(String.class, String.class);
 
         LoginPage loginPage = new LoginPage(this.context.driver);
