@@ -6,6 +6,10 @@ import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.Hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -13,24 +17,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @ExtendWith(ExtensionBaseTest.class)
 public class LoginTests extends BaseTest {
 
-    String validUsername = "standard_user";
-    String validPassword = "secret_sauce";
-    String invalidUsername = "invalid_user";
-    String invalidPassword = "invalid_password";
-
 //    @Random
 //    private int temporary;
 //    @Random
 //    private static int temporary2;
 
-    @Test
-    public void Test_1() {
+//    @Test
+    @ParameterizedTest
+    @MethodSource("TestDataProvider#validLoginTestDataProvider")
+    public void Test_1(Hashtable<String, String> loginData) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(this.validUsername);
-        log.info("Successfully inputted valid username: [" + this.validUsername + "]");
-        loginPage.inputPassword(this.validPassword);
-        log.info("Successfully inputted valid password: [" + this.validPassword + "]");
+        loginPage.inputUserName(loginData.get("username"));
+        log.info("Successfully inputted valid username: [" + loginData.get("username") + "]");
+        loginPage.inputPassword(loginData.get("password"));
+        log.info("Successfully inputted valid password: [" + loginData.get("password") + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 
@@ -40,14 +41,15 @@ public class LoginTests extends BaseTest {
         log.info("Successfully logged in and landed on HomePage");
     }
 
-    @Test
-    public void Test_2() {
+    @ParameterizedTest
+    @MethodSource("TestDataProvider#invalidLoginTestDataProvider")
+    public void Test_2(Hashtable<String, String> loginData) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(this.invalidUsername);
-        log.info("Successfully inputted invalid username: [" + this.invalidUsername + "]");
-        loginPage.inputPassword(this.invalidPassword);
-        log.info("Successfully inputted invalid password: [" + this.invalidPassword + "]");
+        loginPage.inputUserName(loginData.get("username"));
+        log.info("Successfully inputted invalid username: [" + loginData.get("username") + "]");
+        loginPage.inputPassword(loginData.get("password"));
+        log.info("Successfully inputted invalid password: [" + loginData.get("password") + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 

@@ -9,7 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 
 import java.io.ByteArrayInputStream;
 
-public class ExtensionBaseTest implements AfterTestExecutionCallback{
+public class ExtensionBaseTest implements AfterTestExecutionCallback {
     @Override
     public void afterTestExecution(ExtensionContext context) throws Exception {
         if (context.getExecutionException().isPresent()) {
