@@ -1,14 +1,15 @@
 package TestScriptData;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.List;
 import java.util.stream.Stream;
 
 public class TestDataProvider {
@@ -49,13 +50,24 @@ public class TestDataProvider {
 
         return result;
     }
+
     public static Stream<Arguments> homePageTestDataProvider() {
         JsonObject jsonObj = readJson("src/test/resources/TestData/home_page_data.json");
-
-        Gson gson = new Gson();
-        String jsonInString = jsonObj.toString();
-        HomePageTestData hptd= gson.fromJson(jsonInString, HomePageTestData.class);
+        HomePageTestData hptd = mapJsonToClass(jsonObj, HomePageTestData.class);
 
         return Stream.of(Arguments.arguments(hptd));
+    }
+
+    public static Stream<Arguments> shoppingCartTestDataProvider() {
+        JsonObject jsonObj = readJson("src/test/resources/TestData/shopping_cart_page_data.json");
+        ShoppingCartTestData sctd = mapJsonToClass(jsonObj, ShoppingCartTestData.class);
+
+        return Stream.of(Arguments.arguments(sctd));
+    }
+
+    private static <T> T mapJsonToClass(JsonObject jsonObj, Class<T> currentClass) {
+        Gson gson = new Gson();
+        String jsonInString = jsonObj.toString();
+        return gson.fromJson(jsonInString, currentClass);
     }
 }

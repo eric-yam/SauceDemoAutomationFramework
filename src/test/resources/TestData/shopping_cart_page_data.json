@@ -1,0 +1,19 @@
+{
+  "username": "standard_user",
+  "password": "secret_sauce",
+  "expectedSubTotal": 113.95,
+  "productsToRemove": [
+    "Sauce Labs Backpack",
+    "Sauce Labs Bike Light",
+    "Sauce Labs Bolt T-Shirt",
+    "Sauce Labs Fleece Jacket",
+    "Sauce Labs Onesie"
+  ],
+  "productsToSelect": [
+    "Sauce Labs Backpack",
+    "Sauce Labs Bike Light",
+    "Sauce Labs Bolt T-Shirt",
+    "Sauce Labs Fleece Jacket",
+    "Sauce Labs Onesie"
+  ]
+}
