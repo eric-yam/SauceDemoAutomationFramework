@@ -4,7 +4,6 @@ import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,9 +21,9 @@ public class LoginTests extends BaseTest {
 //    @Random
 //    private static int temporary2;
 
-//    @Test
+    //    @Test
     @ParameterizedTest
-    @MethodSource("TestDataProvider#validLoginTestDataProvider")
+    @MethodSource("TestScriptData.TestDataProvider#validLoginTestDataProvider")
     public void Test_1(Hashtable<String, String> loginData) {
         LoginPage loginPage = new LoginPage(driver);
 
@@ -42,7 +41,7 @@ public class LoginTests extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("TestDataProvider#invalidLoginTestDataProvider")
+    @MethodSource("TestScriptData.TestDataProvider#invalidLoginTestDataProvider")
     public void Test_2(Hashtable<String, String> loginData) {
         LoginPage loginPage = new LoginPage(driver);
 

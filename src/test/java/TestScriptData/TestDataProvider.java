@@ -1,12 +1,15 @@
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+package TestScriptData;
+
+import com.google.gson.*;
+import org.junit.jupiter.params.provider.Arguments;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.stream.Stream;
 
 public class TestDataProvider {
 
@@ -46,24 +49,13 @@ public class TestDataProvider {
 
         return result;
     }
+    public static Stream<Arguments> homePageTestDataProvider() {
+        JsonObject jsonObj = readJson("src/test/resources/TestData/home_page_data.json");
 
-//    public static Object[][] loginTestDataProvider() {
-//        JsonObject jsonObj = readJson();
-//        Object[][] result = new Object[jsonObj.keySet().size()][1];
-//
-//        for (int i = 0; i < jsonObj.keySet().size(); i++) {
-//            Hashtable<String, String> loginMap = new Hashtable<String, String>();
-//
-//            String user = (String) jsonObj.keySet().toArray()[i];
-//
-//            for (String key : jsonObj.get(user).getAsJsonObject().keySet()) {
-//                loginMap.put(key, jsonObj.get(user).getAsJsonObject().get(key).getAsString());
-//            }
-//            result[i][0] = loginMap;
-//        }
-//
-////        jsonObj.get("user").getAsJsonObject().keySet()
-////        jsonObj.keySet()
-//        return result;
-//    }
+        Gson gson = new Gson();
+        String jsonInString = jsonObj.toString();
+        HomePageTestData hptd= gson.fromJson(jsonInString, HomePageTestData.class);
+
+        return Stream.of(Arguments.arguments(hptd));
+    }
 }

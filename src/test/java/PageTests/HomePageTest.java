@@ -2,41 +2,24 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
+import TestScriptData.HomePageTestData;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-
-import java.util.Arrays;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @ExtendWith(ExtensionBaseTest.class)
 public class HomePageTest extends BaseTest {
-    String[] expectedProductNames = {
-            "Sauce Labs Backpack",
-            "Sauce Labs Bike Light",
-            "Sauce Labs Bolt T-Shirt",
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Onesie"
-    };
 
-    String[] productsToSelect = {
-            "Sauce Labs Backpack",
-            "Sauce Labs Bike Light",
-            "Sauce Labs Bolt T-Shirt",
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Onesie"
-    };
-    String username = "standard_user";
-    String password = "secret_sauce";
-
-    @Test
-    public void Test_1() {
-        //Refactor to move test variables into separate test configuration file
+    @ParameterizedTest
+    @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
+    public void Test_1(HomePageTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(this.username, this.password);
-        log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
+        loginPage.login(hptd.getUsername(), hptd.getPassword());
+        log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");
 
         HomePage homePage = new HomePage(driver);
         homePage.waitForHomePage();
@@ -44,20 +27,20 @@ public class HomePageTest extends BaseTest {
         log.info("Successfully logged in and landed on HomePage");
 
         boolean productFound = true;
-        for (int i = 0; productFound && i < this.expectedProductNames.length; i++) {
-            productFound = productFound && (!homePage.getProductByName(this.expectedProductNames[i]).isEmpty());
+        for (int i = 0; productFound && i < hptd.getExpectedProductNames().size(); i++) {
+            productFound = productFound && (!homePage.getProductByName(hptd.getExpectedProductNames().get(i)).isEmpty());
         }
 
         assertTrue(productFound);
-        log.info("Successfully validated all expected products exist on Home Page: " +
-                Arrays.toString(this.expectedProductNames));
+        log.info("Successfully validated all expected products exist on Home Page: " + hptd.getExpectedProductNames());
     }
 
-    @Test
-    public void Test_2() {
+    @ParameterizedTest
+    @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
+    public void Test_2(HomePageTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("standard_user", "secret_sauce");
-        log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
+        loginPage.login(hptd.getUsername(), hptd.getPassword());
+        log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");
 
         HomePage homePage = new HomePage(driver);
         assertTrue(homePage.topNavigationBarDisplayed());
@@ -85,17 +68,18 @@ public class HomePageTest extends BaseTest {
     }
 
     //Verify we can add items to cart through the homepage
-    @Test
-    public void Test_3() {
+    @ParameterizedTest
+    @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
+    public void Test_3(HomePageTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(this.username, this.password);
-        log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
+        loginPage.login(hptd.getUsername(), hptd.getPassword());
+        log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");
 
         HomePage homePage = new HomePage(driver);
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
-        for (String s : this.productsToSelect) {
+        for (String s : hptd.getProductsToSelect()) {
             homePage.clickProductAddToCart(s);
             log.info("Product: [" + s + "] on home page has been added to cart");
         }
