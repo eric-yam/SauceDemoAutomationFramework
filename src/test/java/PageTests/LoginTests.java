@@ -2,13 +2,12 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
+import TestScriptData.LoginPageTestData;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
-
-import java.util.Hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,14 +22,14 @@ public class LoginTests extends BaseTest {
 
     //    @Test
     @ParameterizedTest
-    @MethodSource("TestScriptData.TestDataProvider#validLoginTestDataProvider")
-    public void Test_1(Hashtable<String, String> loginData) {
+    @MethodSource("TestScriptData.TestDataProvider#loginTestDataProvider")
+    public void Test_1(LoginPageTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(loginData.get("username"));
-        log.info("Successfully inputted valid username: [" + loginData.get("username") + "]");
-        loginPage.inputPassword(loginData.get("password"));
-        log.info("Successfully inputted valid password: [" + loginData.get("password") + "]");
+        loginPage.inputUserName(lptd.getValidUsername());
+        log.info("Successfully inputted valid username: [" + lptd.getValidUsername() + "]");
+        loginPage.inputPassword(lptd.getValidPassword());
+        log.info("Successfully inputted valid password: [" + lptd.getValidPassword() + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 
@@ -41,14 +40,14 @@ public class LoginTests extends BaseTest {
     }
 
     @ParameterizedTest
-    @MethodSource("TestScriptData.TestDataProvider#invalidLoginTestDataProvider")
-    public void Test_2(Hashtable<String, String> loginData) {
+    @MethodSource("TestScriptData.TestDataProvider#loginTestDataProvider")
+    public void Test_2(LoginPageTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(loginData.get("username"));
-        log.info("Successfully inputted invalid username: [" + loginData.get("username") + "]");
-        loginPage.inputPassword(loginData.get("password"));
-        log.info("Successfully inputted invalid password: [" + loginData.get("password") + "]");
+        loginPage.inputUserName(lptd.getInvalidUsername());
+        log.info("Successfully inputted invalid username: [" + lptd.getInvalidUsername() + "]");
+        loginPage.inputPassword(lptd.getInvalidPassword());
+        log.info("Successfully inputted invalid password: [" + lptd.getInvalidPassword() + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 

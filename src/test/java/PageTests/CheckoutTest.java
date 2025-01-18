@@ -2,66 +2,51 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
+import TestScriptData.CheckoutPageTestData;
 import org.PageObjects.Pages.CheckoutPage.CheckoutFinishPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutOverviewPage;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.PageObjects.Pages.ShoppingCartPage.ShoppingCartPage;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(ExtensionBaseTest.class)
 public class CheckoutTest extends BaseTest {
-    String[] productsToSelect = {
-            "Sauce Labs Backpack",
-            "Sauce Labs Bike Light",
-            "Sauce Labs Bolt T-Shirt",
-            "Sauce Labs Fleece Jacket",
-            "Sauce Labs Onesie"
-    };
-
-    String username = "standard_user";
-    String password = "secret_sauce";
-
-    double expectedSubTotal = 113.95;
-
-    String firstName = "Cire";
-    String lastName = "May";
-    String postalCode = "underwater";
-
-    @Test
-    public void Test_1() {
+    @ParameterizedTest
+    @MethodSource("TestScriptData.TestDataProvider#checkoutTestDataProvider")
+    public void Test_1(CheckoutPageTestData cptd) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(this.username, this.password);
-        log.info("Logged in with valid username, password: [" + this.username + ", " + this.password + "]");
+        loginPage.login(cptd.getUsername(), cptd.getPassword());
+        log.info("Logged in with valid username, password: [" + cptd.getUsername() + ", " + cptd.getPassword() + "]");
 
         HomePage homePage = new HomePage(driver);
         homePage.waitForHomePage();
         assertTrue(homePage.topNavigationBarDisplayed());
         log.info("Successfully logged in and landed on HomePage");
 
-        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, Arrays.asList(this.productsToSelect));
+        ArrayList<String> productsAddedLog = homePage.addProductProductPage(driver, cptd.getProductsToSelect());
         log.info("Product: " + productsAddedLog + " added to shopping cart");
-//        this.addProductsToCart(driver, this.productsToSelect);
+//        cptd.addProductsToCart(driver, cptd.productsToSelect);
         homePage.clickShoppingCart();
 
         ShoppingCartPage scp = new ShoppingCartPage(driver);
         scp.waitForShoppingCartPage();
         log.info("Landed on Shopping Cart Page");
 
-        assertEquals(scp.getNumberOfProductsInCart(), this.productsToSelect.length);
+        assertEquals(scp.getNumberOfProductsInCart(), cptd.getProductsToSelect().size());
         log.info("Successfully validated actual cart size: [" + scp.getNumberOfProductsInCart() +
-                "] matches expected cart size: [" + this.productsToSelect.length + "]");
+                "] matches expected cart size: [" + cptd.getProductsToSelect().size() + "]");
 
-        assertEquals(scp.calculateSubTotal(), expectedSubTotal);
+        assertEquals(scp.calculateSubTotal(), cptd.getExpectedSubTotal());
         log.info("Successfully validated actual subtotal: [" + scp.calculateSubTotal() +
-                "] matches expected subtotal: [" + expectedSubTotal + "]");
+                "] matches expected subtotal: [" + cptd.getExpectedSubTotal() + "]");
         scp.clickCheckoutButton();
 
         CheckoutInformationPage cip = new CheckoutInformationPage(driver);
@@ -78,11 +63,11 @@ public class CheckoutTest extends BaseTest {
         assertFalse(cip.isErrorMsgDisplayed());
         log.info("Successfully validated error message not displayed on Checkout Information Page");
 
-        cip.setInputFirstName(this.firstName);
-        cip.setInputLastName(this.lastName);
-        cip.setInputPostalCode(this.postalCode);
-        log.info("Entered Checkout Information: [" + this.firstName + ", " +
-                this.lastName + ", " + this.postalCode + "] ");
+        cip.setInputFirstName(cptd.getFirstName());
+        cip.setInputLastName(cptd.getLastName());
+        cip.setInputPostalCode(cptd.getPostalCode());
+        log.info("Entered Checkout Information: [" + cptd.getFirstName() + ", " +
+                cptd.getLastName() + ", " + cptd.getPostalCode() + "] ");
 
         cip.clickContinueButton();
 
@@ -90,9 +75,9 @@ public class CheckoutTest extends BaseTest {
         cop.waitForCheckoutOverviewPage();
         log.info("Landed on Checkout Overview Page");
 
-        assertEquals(cop.getNumberOfProductsInCart(), this.productsToSelect.length);
+        assertEquals(cop.getNumberOfProductsInCart(), cptd.getProductsToSelect().size());
         log.info("Successfully validated actual cart size: [" + scp.getNumberOfProductsInCart() +
-                "] matches expected cart size: [" + this.productsToSelect.length + "]");
+                "] matches expected cart size: [" + cptd.getProductsToSelect().size() + "]");
 
         assertEquals(cop.getSubTotalLabel(), cop.calculateSubTotal());
         log.info("Successfully validated actual subtotal: [" + cop.calculateSubTotal() +

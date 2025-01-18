@@ -3,11 +3,11 @@ package TestScriptData;
 import java.util.List;
 
 public class ShoppingCartTestData {
-    String username;
-    String password;
-    List<String> productsToSelect;
-    List<String> productsToRemove;
-    double expectedSubTotal;
+    private String username;
+    private String password;
+    private List<String> productsToSelect;
+    private List<String> productsToRemove;
+    private double expectedSubTotal;
 
     public String getUsername() {
         return username;
