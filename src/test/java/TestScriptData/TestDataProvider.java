@@ -9,7 +9,6 @@ import org.junit.jupiter.params.provider.Arguments;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.Hashtable;
 import java.util.stream.Stream;
 
 public class TestDataProvider {
