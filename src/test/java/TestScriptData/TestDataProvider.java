@@ -29,27 +29,6 @@ public class TestDataProvider {
         return jsonObj;
     }
 
-//    public static Object[][] validLoginTestDataProvider() {
-//        return validLogin("src/test/resources/TestData/login_page_data.json", "user");
-//    }
-//
-//    public static Object[][] invalidLoginTestDataProvider() {
-//        return validLogin("src/test/resources/TestData/login_page_data.json", "invalid_user");
-//    }
-//
-//    public static Object[][] validLogin(String filepath, String user) {
-//        JsonObject jsonObj = readJson(filepath);
-//        Object[][] result = new Object[1][1];
-//        Hashtable<String, String> loginMap = new Hashtable<String, String>();
-//
-//        for (String key : jsonObj.get(user).getAsJsonObject().keySet()) {
-//            loginMap.put(key, jsonObj.get(user).getAsJsonObject().get(key).getAsString());
-//        }
-//        result[0][0] = loginMap;
-//
-//        return result;
-//    }
-
     public static Stream<Arguments> loginTestDataProvider() {
         JsonObject jsonObj = readJson("src/test/resources/TestData/login_page_data.json");
         LoginPageTestData lptd = mapJsonToClass(jsonObj, LoginPageTestData.class);

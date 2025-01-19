@@ -1,24 +1,16 @@
 package TestScriptData;
 
+import java.util.Hashtable;
+
 public class LoginPageTestData {
-    private String validUsername;
-    private String validPassword;
-    private String invalidUsername;
-    private String invalidPassword;
+    private Hashtable<String, String> validUser;
+    private Hashtable<String, String> invalidUser;
 
-    public String getValidUsername() {
-        return validUsername;
+    public Hashtable<String, String> getValidUser() {
+        return validUser;
     }
 
-    public String getValidPassword() {
-        return validPassword;
-    }
-
-    public String getInvalidUsername() {
-        return invalidUsername;
-    }
-
-    public String getInvalidPassword() {
-        return invalidPassword;
+    public Hashtable<String, String> getInvalidUser() {
+        return invalidUser;
     }
 }

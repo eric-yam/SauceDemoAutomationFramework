@@ -26,10 +26,10 @@ public class LoginTests extends BaseTest {
     public void Test_1(LoginPageTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(lptd.getValidUsername());
-        log.info("Successfully inputted valid username: [" + lptd.getValidUsername() + "]");
-        loginPage.inputPassword(lptd.getValidPassword());
-        log.info("Successfully inputted valid password: [" + lptd.getValidPassword() + "]");
+        loginPage.inputUserName(lptd.getValidUser().get("username"));
+        log.info("Successfully inputted valid username: [" + lptd.getValidUser().get("username") + "]");
+        loginPage.inputPassword(lptd.getValidUser().get("password"));
+        log.info("Successfully inputted valid password: [" + lptd.getValidUser().get("password") + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 
@@ -44,10 +44,10 @@ public class LoginTests extends BaseTest {
     public void Test_2(LoginPageTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
-        loginPage.inputUserName(lptd.getInvalidUsername());
-        log.info("Successfully inputted invalid username: [" + lptd.getInvalidUsername() + "]");
-        loginPage.inputPassword(lptd.getInvalidPassword());
-        log.info("Successfully inputted invalid password: [" + lptd.getInvalidPassword() + "]");
+        loginPage.inputUserName(lptd.getInvalidUser().get("username"));
+        log.info("Successfully inputted invalid username: [" + lptd.getInvalidUser().get("username") + "]");
+        loginPage.inputPassword(lptd.getInvalidUser().get("password"));
+        log.info("Successfully inputted invalid password: [" + lptd.getInvalidUser().get("password") + "]");
         loginPage.clickLoginButton();
         log.info("Clicked Login button");
 
