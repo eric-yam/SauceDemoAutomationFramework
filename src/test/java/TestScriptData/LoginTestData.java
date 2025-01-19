@@ -2,7 +2,7 @@ package TestScriptData;
 
 import java.util.Hashtable;
 
-public class LoginPageTestData {
+public class LoginTestData {
     private Hashtable<String, String> validUser;
     private Hashtable<String, String> invalidUser;
 

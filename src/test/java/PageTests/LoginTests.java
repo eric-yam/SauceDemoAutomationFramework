@@ -2,7 +2,7 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
-import TestScriptData.LoginPageTestData;
+import TestScriptData.LoginTestData;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +23,7 @@ public class LoginTests extends BaseTest {
     //    @Test
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#loginTestDataProvider")
-    public void Test_1(LoginPageTestData lptd) {
+    public void Test_1(LoginTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.inputUserName(lptd.getValidUser().get("username"));
@@ -41,7 +41,7 @@ public class LoginTests extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#loginTestDataProvider")
-    public void Test_2(LoginPageTestData lptd) {
+    public void Test_2(LoginTestData lptd) {
         LoginPage loginPage = new LoginPage(driver);
 
         loginPage.inputUserName(lptd.getInvalidUser().get("username"));

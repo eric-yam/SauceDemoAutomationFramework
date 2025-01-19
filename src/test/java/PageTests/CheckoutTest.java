@@ -2,7 +2,7 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
-import TestScriptData.CheckoutPageTestData;
+import TestScriptData.CheckoutTestData;
 import org.PageObjects.Pages.CheckoutPage.CheckoutFinishPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutInformationPage;
 import org.PageObjects.Pages.CheckoutPage.CheckoutOverviewPage;
@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class CheckoutTest extends BaseTest {
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#checkoutTestDataProvider")
-    public void Test_1(CheckoutPageTestData cptd) {
+    public void Test_1(CheckoutTestData cptd) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(cptd.getUsername(), cptd.getPassword());
         log.info("Logged in with valid username, password: [" + cptd.getUsername() + ", " + cptd.getPassword() + "]");

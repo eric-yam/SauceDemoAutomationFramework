@@ -2,7 +2,7 @@ package PageTests;
 
 import PageTests.Extensions.ExtensionBaseTest;
 import PageTests.TestBase.BaseTest;
-import TestScriptData.HomePageTestData;
+import TestScriptData.HomeTestData;
 import org.PageObjects.Pages.HomePage.HomePage;
 import org.PageObjects.Pages.LoginPage.LoginPage;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -16,7 +16,7 @@ public class HomePageTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
-    public void Test_1(HomePageTestData hptd) {
+    public void Test_1(HomeTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(hptd.getUsername(), hptd.getPassword());
         log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");
@@ -37,7 +37,7 @@ public class HomePageTest extends BaseTest {
 
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
-    public void Test_2(HomePageTestData hptd) {
+    public void Test_2(HomeTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(hptd.getUsername(), hptd.getPassword());
         log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");
@@ -70,7 +70,7 @@ public class HomePageTest extends BaseTest {
     //Verify we can add items to cart through the homepage
     @ParameterizedTest
     @MethodSource("TestScriptData.TestDataProvider#homePageTestDataProvider")
-    public void Test_3(HomePageTestData hptd) {
+    public void Test_3(HomeTestData hptd) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(hptd.getUsername(), hptd.getPassword());
         log.info("Logged in with valid username, password: [" + hptd.getUsername() + ", " + hptd.getPassword() + "]");

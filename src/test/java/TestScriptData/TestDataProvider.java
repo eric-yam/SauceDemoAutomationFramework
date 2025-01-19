@@ -31,14 +31,14 @@ public class TestDataProvider {
 
     public static Stream<Arguments> loginTestDataProvider() {
         JsonObject jsonObj = readJson("src/test/resources/TestData/login_page_data.json");
-        LoginPageTestData lptd = mapJsonToClass(jsonObj, LoginPageTestData.class);
+        LoginTestData lptd = mapJsonToClass(jsonObj, LoginTestData.class);
 
         return Stream.of(Arguments.arguments(lptd));
     }
 
     public static Stream<Arguments> homePageTestDataProvider() {
         JsonObject jsonObj = readJson("src/test/resources/TestData/home_page_data.json");
-        HomePageTestData hptd = mapJsonToClass(jsonObj, HomePageTestData.class);
+        HomeTestData hptd = mapJsonToClass(jsonObj, HomeTestData.class);
 
         return Stream.of(Arguments.arguments(hptd));
     }
@@ -52,7 +52,7 @@ public class TestDataProvider {
 
     public static Stream<Arguments> checkoutTestDataProvider() {
         JsonObject jsonObj = readJson("src/test/resources/TestData/checkout_page_data.json");
-        CheckoutPageTestData cptd = mapJsonToClass(jsonObj, CheckoutPageTestData.class);
+        CheckoutTestData cptd = mapJsonToClass(jsonObj, CheckoutTestData.class);
 
         return Stream.of(Arguments.arguments(cptd));
     }

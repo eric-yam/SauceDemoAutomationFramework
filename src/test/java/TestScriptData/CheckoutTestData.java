@@ -2,7 +2,7 @@ package TestScriptData;
 
 import java.util.List;
 
-public class CheckoutPageTestData {
+public class CheckoutTestData {
     private String username;
     private String password;
     private double expectedSubTotal;

@@ -2,7 +2,7 @@ package TestScriptData;
 
 import java.util.List;
 
-public class HomePageTestData {
+public class HomeTestData {
     // This class is a Java object representation of it's corresponding JSON object
     private String username;
     private String password;
