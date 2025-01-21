@@ -29,8 +29,8 @@ Executing all test scripts: ```mvn clean test```
 
 Execute specific test script: ```mvn clean -Dtest=[Test Class Name] test```
 
-Execute feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature```
+Execute feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/java/features/[Feature File Name].feature```
 
-Execute specific scenario from feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/resources/features/[Feature File Name].feature:[Line Number of Scenario]```
+Execute specific scenario from feature file: ```mvn clean test -Dsurefire.includeJUnit5Engines=cucumber -Dcucumber.features=src/test/java/features/[Feature File Name].feature:[Line Number of Scenario]```
 
 
